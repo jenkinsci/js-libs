@@ -1,7 +1,7 @@
 {
-  "name": "jenkins-js-jquery",
+  "name": "jenkins-js-jquery1",
   "version": "1.0.0-alpha-1",
-  "description": "Jenkins CI JQuery JavaScript module",
+  "description": "Jenkins CI jQuery v1 JavaScript module",
   "author": "Tom Fennelly <tom.fennelly@gmail.com> (https://github.com/tfennelly)",
   "license": "MIT",
   "devDependencies": {
@@ -12,6 +12,7 @@
     "vinyl-source-stream": "^1.1.0"
   },
   "dependencies": {
-    "jenkins-js-core": "^1.0.0-alpha-2"
+    "jenkins-js-core": "^1.0.0-alpha-4",
+    "jquery": "^1.11.3"
   }
 }
