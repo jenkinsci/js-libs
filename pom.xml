@@ -11,12 +11,7 @@
     <name>UI Parent POM</name>
 
     <modules>
-        
-        <!-- jQuery -->
-        <module>jquery/jquery1</module> <!-- bundle js module -->
-        <module>jquery/jquery2</module> <!-- bundle js module -->
-        <module>jquery</module>  <!-- the jenkins plugin -->
-        
+        <module>jquery</module>
         <module>aggregator</module>
     </modules>
 
