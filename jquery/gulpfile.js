@@ -6,7 +6,7 @@ var source = require('vinyl-source-stream');
 gulp.task('default', ['test', 'bundle']);
 
 gulp.task('test', function () {
-    return gulp.src('spec/*-spec.js')
+    return gulp.src('src/test/js/*-spec.js')
         .pipe(jasmine());
 });
 

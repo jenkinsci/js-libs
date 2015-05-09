@@ -1,6 +1,6 @@
 var jQuery2 = require('detached-jquery-2.1.4');
 
-exports.getjQuery = jQuery2.getJQuery;
+exports.getJQuery = jQuery2.getJQuery;
 exports.newJQuery = jQuery2.newJQuery;
 
 // export the module so other Jenkins plugins can "require" it.
