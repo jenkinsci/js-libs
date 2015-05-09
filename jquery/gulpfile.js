@@ -13,6 +13,7 @@ gulp.task('test', function () {
 gulp.task('bundle', function () {
     bundle('./src/main/js/jquery1.js', 'jquery1.js');
     bundle('./src/main/js/jquery2.js', 'jquery2.js');
+    bundle('./src/main/js/jqueryui1.js', 'jqueryui1.js');
 });
 
 function bundle(inputJs, moduleName) {

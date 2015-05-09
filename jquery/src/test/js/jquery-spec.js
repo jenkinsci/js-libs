@@ -5,7 +5,7 @@
 
 var testUtil = require("./test-util");
 
-describe("index.js", function () {
+describe("jquery.js", function () {
 
     it("- test", function (done) {
         testUtil.onJenkinsPage(function(window) {
