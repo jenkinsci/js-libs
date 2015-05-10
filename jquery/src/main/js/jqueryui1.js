@@ -46,6 +46,7 @@ jenkins.requireModule('jquery', 'jquery2')
             /* --------------------------------------------------------------------------------------------------------------------------- */
             
             jenkins.exportModule('jquery', 'jqueryui1', exports);
+            jenkins.addModuleCSSToPage('jquery', 'jqueryui1');
         } finally {
             window.$ = _$;
             window.jQuery = _jQuery;

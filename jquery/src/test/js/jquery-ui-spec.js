@@ -28,6 +28,12 @@ describe("jquery-ui.js", function () {
             // let's make sure that's not the case for a regular unpolluted jQuery
             var $ = jQueryModule.getJQuery();
             expect($.dialog).not.toBeDefined();
+            
+            // Check that the CSS link was added to page
+            var document = require('window-handle').getWindow().document;
+            var cssEl = document.getElementById('jenkins-plugin-module:jquery:jqueryui1:css');            
+            expect(cssEl).not.toBe(null);
+            expect(cssEl.getAttribute('href')).toBe('/jenkins/plugin/jquery/jsmodules/jqueryui1/style.css');            
 
             done();
         });
