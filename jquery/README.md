@@ -12,9 +12,9 @@ var $;
 
 // See https://www.npmjs.com/package/jenkins-js-core
 require('jenkins-js-core').requireModule('jquery', 'jquery2')
-    .then(function(jQuery) {
+    .then(function(jquery2) {
         // See https://www.npmjs.com/package/detached-jquery
-        $ = jQuery.getJQuery(); // Or you can create a spanking new/clean jQuery instance via jQuery.newJQuery().
+        $ = jquery2.getJQuery(); // Or you can create a spanking new/clean jQuery instance via jQuery.newJQuery().
         
         // jQuery 2 is now loaded from the 'jquery' plugin
     });
@@ -32,8 +32,8 @@ var $ui;
 
 // See https://www.npmjs.com/package/jenkins-js-core
 require('jenkins-js-core').requireModule('jquery', 'jqueryui1')
-    .then(function(jQueryUI) {
-        $ui = jQueryUI.getJQueryUI();
+    .then(function(jqueryui1) {
+        $ui = jqueryui1.getJQueryUI();
         
         // jQuery UI 1 is now loaded from the 'jquery' plugin
         // + the CSS has been added to the page.
