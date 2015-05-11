@@ -13,7 +13,7 @@ var $bootstrap;
 // See https://www.npmjs.com/package/jenkins-js-core
 require('jenkins-js-core').requireModule('bootstrap', 'bootstrap3')
     .then(function(bootstrap3) {
-        $bootstrap = bootstrap3;
+        $bootstrap = bootstrap3.getBootstrap();
         
         // Bootstrap 3 is now loaded from the 'bootstrap' plugin
         // + the CSS has been added to the page.
