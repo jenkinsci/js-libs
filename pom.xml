@@ -12,6 +12,7 @@
 
     <modules>
         <module>jquery</module>
+        <module>bootstrap</module>
         <module>aggregator</module>
     </modules>
 

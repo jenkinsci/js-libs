@@ -84,6 +84,7 @@
 
                         // Add the HPL file for each of the plugins that we want to auto-scan for changes.
                         addPluginHPL('jquery');
+                        addPluginHPL('bootstrap');
                     </source>
                 </configuration>
             </plugin>
