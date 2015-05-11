@@ -13,7 +13,7 @@ var $;
 // See https://www.npmjs.com/package/jenkins-js-core
 require('jenkins-js-core').requireModule('jquery', 'jquery2')
     .then(function(jquery2) {
-        // See https://www.npmjs.com/package/detached-jquery
+        // See https://github.com/tfennelly/jquery-detached
         $ = jquery2.getJQuery(); // Or you can create a spanking new/clean jQuery instance via jQuery.newJQuery().
         
         // jQuery 2 is now loaded from the 'jquery' plugin
@@ -43,4 +43,4 @@ require('jenkins-js-core').requireModule('jquery', 'jqueryui1')
 __Note__ that the `$ui` instance (in the above example) is a clean jQuery v2, with the jQuery UI v1
 plugins installed onto it i.e. it can be safely used in the browser alongside other jQuery instances of 
 different versions, or with different (and possibly conflicting) jQuery extensions.
-See [detached-jquery](https://www.npmjs.com/package/detached-jquery).
+See [jquery-detached](https://github.com/tfennelly/jquery-detached).
