@@ -4,11 +4,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.jenkins-ci.plugins</groupId>
-        <artifactId>plugin</artifactId>
-        <!-- Baseline Jenkins version you use to build and test the plugin. Users must have this version or newer to run. -->
-        <version>1.580.1</version>
-        <relativePath/>
+        <groupId>org.jenkins-ci.ui</groupId>
+        <artifactId>js-module-base</artifactId>
+        <version>1.0-SNAPSHOT</version>
+        <relativePath>../js-module-base</relativePath>
     </parent>
     <groupId>org.jenkins-ci.ui</groupId>
     <artifactId>aggregator</artifactId>
@@ -40,6 +39,14 @@
      -->
 
     <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+            <resource>
+                <directory>target/generated-adjuncts</directory>
+            </resource>
+        </resources>
         <plugins>
             <plugin>
                 <groupId>org.jenkins-ci.tools</groupId>

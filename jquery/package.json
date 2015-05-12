@@ -16,7 +16,7 @@
   "dependencies": {
     "detached-jquery-1.9.1": "^1.9.1-v2",
     "detached-jquery-2.1.4": "^2.1.4-v2",
-    "jenkins-js-core": "^1.0.0-alpha-7",
+    "jenkins-js-core": "^1.0.0-alpha-8",
     "window-handle": "0.0.3"
   }
 }
