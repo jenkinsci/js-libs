@@ -2,39 +2,47 @@
 <?jelly escape-by-default='true'?>
 <j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout">
 
-    <l:layout title="JS Modules Demo">
-        <l:main-panel>
-            <st:adjunct includes="org.jenkinsci.demo"/>
+<j:new var="h" className="hudson.Functions" /><!-- instead of JSP functions -->
+${h.initPageVariables(context)}
+    
+<html>
+    <head resURL="${resURL}">
+        <script src="${resURL}/scripts/prototype.js" type="text/javascript"></script>
+        
+    </head>
+    <body>
 
-            <div class="bootstrap-3">
-                
-                <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-                    <span class="hint" title="Press to see modal">Bootstrap modal</span>
-                </button>
+        <st:adjunct includes="org.jenkinsci.demo"/>
 
-                <!-- Modal -->
-                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-                     aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">x</span>
-                                </button>
-                                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-                            </div>
-                            <div class="modal-body">
-                                Twitter Bootstrap v3 modal
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
-                            </div>
+        <div class="bootstrap-3" style="margin: 50px;">
+            
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+                <span class="hint" title="Press to see modal">Bootstrap modal</span>
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">x</span>
+                            </button>
+                            <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                        </div>
+                        <div class="modal-body">
+                            Twitter Bootstrap v3 modal
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
                         </div>
                     </div>
                 </div>
             </div>
-        </l:main-panel>
-    </l:layout>
+        </div>
+    </body>
+</html>
 </j:jelly>
