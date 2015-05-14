@@ -5,8 +5,8 @@ exports.newJQuery = jQuery2.newJQuery;
 
 exports.export = function () {
     // export the module so other Jenkins plugins can "require" it.
-    // See https://github.com/tfennelly/jenkins-js-core
-    require('jenkins-js-core').exportModule('jquery', 'jquery2', exports);
+    // See https://github.com/tfennelly/jenkins-modules
+    require('jenkins-modules').exportModule('jquery', 'jquery2', exports);
 }
 
 exports.export();

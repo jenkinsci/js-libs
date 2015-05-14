@@ -1,4 +1,4 @@
-var jenkins = require('jenkins-js-core');
+var jenkins = require('jenkins-modules');
 
 // Load Bootstrap v3 from the "bootstrap" plugin ...
 jenkins.requireModule('bootstrap', 'bootstrap3')

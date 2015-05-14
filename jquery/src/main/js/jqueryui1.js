@@ -1,4 +1,4 @@
-var jenkins = require('jenkins-js-core');
+var jenkins = require('jenkins-modules');
 var jqueryui;
 
 exports.getJQueryUI = function() {
@@ -8,7 +8,7 @@ exports.getJQueryUI = function() {
     return jqueryui;
 }
 
-// Get jQuery v2 via 'jenkins-js-core'. Of course we could "require" it directly, but then that would
+// Get jQuery v2 via 'jenkins-modules'. Of course we could "require" it directly, but then that would
 // result in Browserify bundling jQuery directly into the jQuery UI bundle, and we don't want that
 // to happen.
 jenkins.requireModule('jquery', 'jquery2')

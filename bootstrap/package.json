@@ -12,10 +12,10 @@
     "gulp-less": "^3.0.3",
     "jsdom": "^3.1.2",
     "vinyl-source-stream": "^1.1.0",
-    "detached-jquery-2.1.4": "^2.1.4-v3"
+    "detached-jquery-2.1.4": "^2.1.4-v5"
   },
   "dependencies": {
-    "jenkins-js-core": "^1.0.0-alpha-8",
-    "window-handle": "0.0.3"
+    "jenkins-modules": "^1.0.0-alpha-10",
+    "window-handle": "0.0.4"
   }
 }

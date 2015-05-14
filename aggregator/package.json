@@ -10,6 +10,6 @@
     "vinyl-source-stream": "^1.1.0"
   },
   "dependencies": {
-    "jenkins-js-core": "^1.0.0-alpha-8"
+    "jenkins-modules": "^1.0.0-alpha-10"
   }
 }

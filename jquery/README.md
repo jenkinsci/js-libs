@@ -10,8 +10,8 @@ var $;
 // Need to make sure you add the relevant assertions to check that `$` is initialised (see below). 
 //
 
-// See https://www.npmjs.com/package/jenkins-js-core
-require('jenkins-js-core').requireModule('jquery', 'jquery2')
+// See https://www.npmjs.com/package/jenkins-modules
+require('jenkins-modules').requireModule('jquery', 'jquery2')
     .then(function(jquery2) {
         // See https://github.com/tfennelly/jquery-detached
         $ = jquery2.getJQuery(); // Or you can create a spanking new/clean jQuery instance via jQuery.newJQuery().
@@ -30,8 +30,8 @@ var $ui;
 // Need to make sure you add the relevant assertions to check that `$ui` is initialised (see below). 
 //
 
-// See https://www.npmjs.com/package/jenkins-js-core
-require('jenkins-js-core').requireModule('jquery', 'jqueryui1')
+// See https://www.npmjs.com/package/jenkins-modules
+require('jenkins-modules').requireModule('jquery', 'jqueryui1')
     .then(function(jqueryui1) {
         $ui = jqueryui1.getJQueryUI();
         

@@ -37,7 +37,7 @@ gulp.task('bundleCSS', function () {
 function bundleJS(inputJs, moduleName) {
     var bundle = browserify(inputJs).bundle();
     // Output bundles to './src/main/webapp/jsmodules/' because that's where
-    // the 'jenkins-js-core' module is going to load them from.
+    // the 'jenkins-modules' module is going to load them from.
     // TODO: minifyify
     return bundle.pipe(source(moduleName))
         .pipe(gulp.dest('./src/main/webapp/jsmodules/'));
