@@ -11,6 +11,7 @@
     <name>UI Parent POM</name>
 
     <modules>
+        <module>js-module-base</module>
         <module>jquery</module>
         <module>bootstrap</module>
         <module>aggregator</module>
