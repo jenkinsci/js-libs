@@ -11,7 +11,7 @@ exports.getJQueryUI = function() {
 // Get jQuery v2 via 'jenkins-modules'. Of course we could "require" it directly, but then that would
 // result in Browserify bundling jQuery directly into the jQuery UI bundle, and we don't want that
 // to happen.
-jenkins.requireModule('jquery', 'jquery2')
+jenkins.requireModule('jquery:jquery2')
     .then(function(jquery2) {
         var window = require('window-handle').getWindow();
         var _$ = window.$;

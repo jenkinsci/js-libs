@@ -11,7 +11,7 @@ var $;
 //
 
 // See https://www.npmjs.com/package/jenkins-modules
-require('jenkins-modules').requireModule('jquery', 'jquery2')
+require('jenkins-modules').requireModule('jquery:jquery2')
     .then(function(jquery2) {
         // See https://github.com/tfennelly/jquery-detached
         $ = jquery2.getJQuery(); // Or you can create a spanking new/clean jQuery instance via jQuery.newJQuery().
@@ -31,7 +31,7 @@ var $ui;
 //
 
 // See https://www.npmjs.com/package/jenkins-modules
-require('jenkins-modules').requireModule('jquery', 'jqueryui1')
+require('jenkins-modules').requireModule('jquery:jqueryui1')
     .then(function(jqueryui1) {
         $ui = jqueryui1.getJQueryUI();
         
