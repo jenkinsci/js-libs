@@ -15,6 +15,7 @@
         <module>jquery</module>
         <module>bootstrap</module>
         <module>handlebars</module>
+        <module>momentjs</module>
         <module>aggregator</module>
     </modules>
 
