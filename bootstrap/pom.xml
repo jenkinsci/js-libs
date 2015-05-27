@@ -14,7 +14,7 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>hpi</packaging>
 
-    <name>UI Frameworks: Twitter Bootstrap CommonJS modules</name>
+    <name>UI Frameworks: Twitter Bootstrap Browserified Jenkins modules</name>
     <licenses>
         <license>
             <name>MIT License</name>
