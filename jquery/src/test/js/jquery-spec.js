@@ -9,30 +9,29 @@ describe("jquery.js", function () {
 
     it("- test", function (done) {
         testUtil.onJenkinsPage(function(window) {
-            var jquery1 = require("../../main/js/jquery1");
-            var jquery2 = require("../../main/js/jquery2");
-            var $1 = jquery1.getJQuery();
+            var $1 = require("../../main/js/jquery1");
+            var $2 = require("../../main/js/jquery2");
             
             expect(window.$).not.toBeDefined();
             expect(window.jQuery).not.toBeDefined();
             
             expect($1('#divOnPage').text()).toBe('jQuery is everywhere');
             
-            var $2 = jquery1.getJQuery();
-            expect($1 === $2).toBe(true);
+            var $1_1 = require("../../main/js/jquery1");
+            expect($1 === $1_1).toBe(true);
 
-            var $3 = jquery1.newJQuery();
-            expect($1 !== $3).toBe(true);
+            var $1_2 = $1.newJQuery();
+            expect($1 !== $1_2).toBe(true);
             
             expect($1('#divOnPage').text()).toBe('jQuery is everywhere');
-            expect($3('#divOnPage').text()).toBe('jQuery is everywhere');
+            expect($1_2('#divOnPage').text()).toBe('jQuery is everywhere');
 
-            var $4 = jquery2.getJQuery();
+            var $2_1 = require("../../main/js/jquery2");
 
             expect($1('#divOnPage').jquery).toBe('1.9.1');
             
-            expect(jquery2.getJQuery()).toBe(jquery2.getJQuery());
-            expect(jquery2.newJQuery()).not.toBe(jquery2.getJQuery());
+            expect(require("../../main/js/jquery2")).toBe(require("../../main/js/jquery2"));
+            expect($2.newJQuery()).not.toBe($2_1);
             
             $1.fn.greenify = function() {
                 this.css( "color", "green" );
@@ -41,8 +40,8 @@ describe("jquery.js", function () {
             $1("#divOnPage").greenify();
 
             try {
-                $3("#divOnPage").greenify();
-                expect('$3').toBe('throwing an exception');
+                $1_2("#divOnPage").greenify();
+                expect('$1_2').toBe('throwing an exception');
             } catch (e) {
                 // This is expected
             }

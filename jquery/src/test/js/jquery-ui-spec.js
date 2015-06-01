@@ -11,8 +11,7 @@ describe("jquery-ui.js", function () {
         testUtil.onJenkinsPage(function() {
             // require jQuery v2 and export it as a module, meaning jqueryui will be able to perform a "requireModule"
             // on it and not have to wait async for it.
-            var jQueryModule = require("../../main/js/jquery2");
-            jQueryModule.export();
+            var $ = require("../../main/js/jquery2");
             
             // require jqueryui. The module should be exported immediately because it doesn't need to wait 
             // for it's underlying jquery2 to be exported (because it already is).
@@ -26,7 +25,6 @@ describe("jquery-ui.js", function () {
             expect(divOnPage.text()).toBe('jQuery is everywhere');
 
             // let's make sure that's not the case for a regular unpolluted jQuery
-            var $ = jQueryModule.getJQuery();
             expect($.dialog).not.toBeDefined();
             
             // Check that the CSS link was added to page
