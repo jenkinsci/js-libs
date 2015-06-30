@@ -9,7 +9,7 @@ describe("jquery-ui.js", function () {
 
     it("- test", function (done) {
         testUtil.onJenkinsPage(function() {
-            // require jQuery v2 and export it as a module, meaning jqueryui will be able to perform a "requireModule"
+            // require jQuery v2 and export it as a module, meaning jqueryui will be able to perform an "import"
             // on it and not have to wait async for it.
             var $ = require("../../main/js/jquery2");
             
@@ -29,9 +29,9 @@ describe("jquery-ui.js", function () {
             
             // Check that the CSS link was added to page
             var document = require('window-handle').getWindow().document;
-            var cssEl = document.getElementById('jenkins-plugin-module:jquery:jqueryui1:css');            
+            var cssEl = document.getElementById('jenkins-plugin-module:jquery-detached:jqueryui1:css');            
             expect(cssEl).not.toBe(null);
-            expect(cssEl.getAttribute('href')).toBe('/jenkins/plugin/jquery/jsmodules/jqueryui1/style.css');            
+            expect(cssEl.getAttribute('href')).toBe('/jenkins/plugin/jquery-detached/jsmodules/jqueryui1/style.css');            
 
             done();
         });

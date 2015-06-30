@@ -11,7 +11,7 @@ var $bootstrap;
 //
 
 // See https://www.npmjs.com/package/jenkins-modules
-require('jenkins-modules').requireModule('bootstrap:bootstrap3')
+require('jenkins-modules').import('bootstrap:bootstrap3')
     .then(function(bootstrap3) {
         $bootstrap = bootstrap3.getBootstrap();
         

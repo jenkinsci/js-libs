@@ -6,4 +6,4 @@ module.exports = sharedJQuery;
 
 // export the module so other Jenkins plugins can "require" it.
 // See https://github.com/tfennelly/jenkins-modules
-require('jenkins-modules').export('jquery', 'jquery2', module);
+require('jenkins-modules').export('jquery-detached', 'jquery2', module);
