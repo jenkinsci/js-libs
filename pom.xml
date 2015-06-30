@@ -12,7 +12,7 @@
 
     <modules>
         <module>js-module-base</module>
-        <module>jquery</module>
+        <module>jquery-detached</module>
         <module>bootstrap</module>
         <module>handlebars</module>
         <module>momentjs</module>

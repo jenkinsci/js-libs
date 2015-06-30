@@ -15,7 +15,7 @@ exports.onJenkinsPage = function(testFunc) {
                 };
             }
             require("window-handle").setWindow(window);
-            require('jenkins-modules').export('jquery', 'jquery2', require("jquery-detached-2.1.4"));
+            require('jenkins-modules').export('jquery-detached', 'jquery2', require("jquery-detached-2.1.4"));
             testFunc(window);
         }
     );    
