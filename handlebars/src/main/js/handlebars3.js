@@ -4,4 +4,4 @@ var handlebars = require('handlebars');
 module.exports = handlebars;    
 
 // Export so other Jenkins bundles can get it
-jenkins.exportModule('handlebars', 'handlebars3', module.exports);
+jenkins.export('handlebars', 'handlebars3', module);

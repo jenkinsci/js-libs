@@ -13,7 +13,7 @@ describe("handlebars3.js", function () {
             require("../../main/js/handlebars3");
             
             var jenkins = require('jenkins-modules');
-            jenkins.requireModule("handlebars:handlebars3")
+            jenkins.import("handlebars:handlebars3")
                 .then(function(handlebars3) {                    
                     expect(handlebars3).toBeDefined();                                        
                     done();

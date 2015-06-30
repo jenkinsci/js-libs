@@ -10,9 +10,9 @@
     "gulp": "^3.8.11",
     "gulp-jasmine-phantom": "^1.1.3",
     "gulp-less": "^3.0.3",
+    "jquery-detached-2.1.4": "^2.1.4-v1",
     "jsdom": "^3.1.2",
-    "vinyl-source-stream": "^1.1.0",
-    "detached-jquery-2.1.4": "^2.1.4"
+    "vinyl-source-stream": "^1.1.0"
   },
   "dependencies": {
     "jenkins-modules": "^1.0.0-alpha",

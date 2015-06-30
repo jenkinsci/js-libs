@@ -19,7 +19,6 @@ gulp.task('clean', function () {
 });
 
 gulp.task('bundleJS', function () {
-    bundleJS('./src/main/js/jquery1.js', 'jquery1.js');
     bundleJS('./src/main/js/jquery2.js', 'jquery2.js');
     bundleJS('./src/main/js/jqueryui1.js', 'jqueryui1.js');
 });
