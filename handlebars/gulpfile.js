@@ -1,26 +1,12 @@
-// TODO: change to use jenkins-js-builder
+var builder = require('jenkins-js-builder');
 
-var gulp = require('gulp');
-var jasmine = require('gulp-jasmine');
-var browserify = require('browserify');
-var source = require('vinyl-source-stream');
+//
+// Use the predefined tasks from jenkins-js-builder.
+//
+builder.defineTasks(['test', 'bundle']);
 
-gulp.task('default', ['test', 'bundle']);
-
-gulp.task('test', function () {
-    return gulp.src('src/test/js/*-spec.js')
-        .pipe(jasmine());
-});
-
-gulp.task('bundle', function () {
-    bundleJS('./handlebars3.js', 'handlebars3.js');
-});
-
-function bundleJS(inputJs, moduleName) {
-    var bundle = browserify(inputJs).bundle();
-    // Output bundles to './src/main/webapp/jsmodules/' because that's where
-    // the 'jenkins-modules' module is going to load them from.
-    // TODO: minifyify
-    return bundle.pipe(source(moduleName))
-        .pipe(gulp.dest('./src/main/webapp/jsmodules/'));
-}
+//
+// Bundle the modules.
+//
+builder.bundle('./handlebars3.js')
+    .asJenkinsModuleResource();
