@@ -5,12 +5,8 @@
   "author": "Tom Fennelly <tom.fennelly@gmail.com> (https://github.com/tfennelly)",
   "license": "MIT",
   "devDependencies": {
-    "browserify": "^10.1.0",
-    "gulp": "^3.8.11",
-    "gulp-jasmine": "^2.0.1",
-    "jsdom": "^3.1.2",
-    "vinyl-source-stream": "^1.1.0",
-    "window-handle": "0.0.6"
+    "gulp": "^3.9.0",
+    "jenkins-js-builder": "0.0.2"
   },
   "dependencies": {
     "jenkins-modules": "^1.0.0-alpha",
