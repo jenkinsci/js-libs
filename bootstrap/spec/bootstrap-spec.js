@@ -9,7 +9,7 @@ describe("bootstrap3.js", function () {
 
     it("- test", function (done) {
         testUtil.onJenkinsPage(function(window) {
-            var bootstrap3 = require("../../main/js/bootstrap3");
+            var bootstrap3 = require("../js/bootstrap3");
             var $bootstrap = bootstrap3.getBootstrap();
             
             expect($bootstrap.fn.jquery).toBe('2.1.4');
