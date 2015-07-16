@@ -3,7 +3,7 @@ var builder = require('jenkins-js-builder');
 //
 // Use the predefined tasks from jenkins-js-builder.
 //
-builder.defineTasks(['bundle']);
+builder.defineTasks(['test', 'bundle']);
 
 //
 // Bundle the module.
