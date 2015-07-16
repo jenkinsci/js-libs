@@ -1,3 +1,5 @@
+// TODO: change to use jenkins-js-builder
+
 var gulp = require('gulp');
 var jasmine = require('gulp-jasmine');
 var browserify = require('browserify');
@@ -11,7 +13,7 @@ gulp.task('test', function () {
 });
 
 gulp.task('bundle', function () {
-    bundleJS('./src/main/js/handlebars3.js', 'handlebars3.js');
+    bundleJS('./handlebars3.js', 'handlebars3.js');
 });
 
 function bundleJS(inputJs, moduleName) {
