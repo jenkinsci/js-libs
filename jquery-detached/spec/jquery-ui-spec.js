@@ -11,11 +11,11 @@ describe("jquery-ui.js", function () {
         testUtil.onJenkinsPage(function() {
             // require jQuery v2 and export it as a module, meaning jqueryui will be able to perform an "import"
             // on it and not have to wait async for it.
-            var $ = require("../../main/js/jquery2");
+            var $ = require("../js/jquery2");
             
             // require jqueryui. The module should be exported immediately because it doesn't need to wait 
             // for it's underlying jquery2 to be exported (because it already is).
-            var jQueryUIModule = require("../../main/js/jqueryui1");
+            var jQueryUIModule = require("../js/jqueryui1");
             var jQueryUI = jQueryUIModule.getJQueryUI();            
             expect(jQueryUI).toBeDefined();
             
