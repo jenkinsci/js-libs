@@ -17,8 +17,8 @@
     <url>TODO</url>
 
     <properties>
-        <node.version>0.10.30</node.version>
-        <npm.version>1.4.21</npm.version>
+        <node.version>0.12.7</node.version>
+        <npm.version>2.13.1</npm.version>
     </properties>
 
     <profiles>
@@ -32,6 +32,9 @@
                     <family>Linux</family>
                     <arch>amd64</arch>
                 </os>
+                <file>
+                    <exists>package.json</exists>
+                </file>
             </activation>
             <properties>
                 <node.classifier>linux-x64</node.classifier>
