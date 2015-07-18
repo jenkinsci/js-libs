@@ -3,12 +3,16 @@
 
 "use strict";
 
-var testUtil = require("./test-util");
+var jsTest = require("jenkins-js-test");
+
+var JENKINS_PAGE = '<html><head resURL="/jenkins"></head><body><div id="divOnPage">Bootstrap is everywhere</div></body></html>';
 
 describe("bootstrap3.js", function () {
 
     it("- test", function (done) {
-        testUtil.onJenkinsPage(function(window) {
+        jsTest.onPage(function(window) {
+            require('jenkins-modules').export('jquery-detached', 'jquery2', require("jquery-detached-2.1.4"));
+            
             var bootstrap3 = require("../js/bootstrap3");
             var $bootstrap = bootstrap3.getBootstrap();
             
@@ -28,6 +32,6 @@ describe("bootstrap3.js", function () {
             expect(cssEl.getAttribute('href')).toBe('/jenkins/plugin/bootstrap/jsmodules/bootstrap3/style.css');            
             
             done();
-        });
+        }, JENKINS_PAGE);
     });
 });
