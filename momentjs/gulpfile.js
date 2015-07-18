@@ -8,5 +8,6 @@ builder.defineTasks(['test', 'bundle']);
 //
 // Bundle the module.
 //
-builder.bundle('./momentjs2.js')
-    .asJenkinsModuleResource();
+builder.bundle('moment', 'momentjs2')
+    .asJenkinsModuleResource()
+    .export();

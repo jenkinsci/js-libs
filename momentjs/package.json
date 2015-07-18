@@ -6,7 +6,7 @@
   "license": "MIT",
   "devDependencies": {
     "gulp": "^3.9.0",
-    "jenkins-js-builder": "0.0.3"
+    "jenkins-js-builder": "^0.0.9"
   },
   "dependencies": {
     "jenkins-modules": "^1.0.0-alpha",

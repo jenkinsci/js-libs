@@ -8,5 +8,6 @@ builder.defineTasks(['test', 'bundle']);
 //
 // Bundle the module.
 //
-builder.bundle('./handlebars3.js')
-    .asJenkinsModuleResource();
+builder.bundle('handlebars', 'handlebars3')
+    .asJenkinsModuleResource()
+    .export();
