@@ -7,12 +7,12 @@
   "devDependencies": {
     "gulp": "^3.9.0",
     "jsdom": "3.1.2",
-    "jenkins-js-builder": "0.0.9"
+    "jenkins-js-builder": "0.0.10"
   },
   "dependencies": {
     "jenkins-modules": "^1.0.0-alpha",
     "jquery-detached-2.1.4": "^2.1.4-v2",
-    "jqueryui-detached-1.11": "^1.11.4-v2",
+    "jqueryui-detached-1.11": "^1.11.4-v4",
     "window-handle": "0.0.6"
   }
 }
