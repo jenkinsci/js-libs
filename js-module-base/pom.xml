@@ -171,6 +171,35 @@
             </build>
         </profile>        
         
+        
+        <profile>
+            <id>clean-node_modules</id>
+            <activation>
+                <file>
+                    <exists>package.json</exists>
+                </file>
+                <property>
+                    <name>cleanNPMs</name>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-clean-plugin</artifactId>
+                        <configuration>
+                            <filesets>
+                                <fileset>
+                                    <directory>node_modules</directory>
+                                    <followSymlinks>false</followSymlinks>
+                                </fileset>
+                            </filesets>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>           
+        
     </profiles>
     
     <repositories>
