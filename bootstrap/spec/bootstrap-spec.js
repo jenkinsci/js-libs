@@ -10,12 +10,13 @@ var JENKINS_PAGE = '<html><head resURL="/jenkins"></head><body><div id="divOnPag
 describe("bootstrap3.js", function () {
 
     it("- test", function (done) {
-        jsTest.onPage(function(window) {
+        jsTest.onPage(function() {
             var bootstrap3 = require("../js/bootstrap3");
             var $bootstrap = bootstrap3.getBootstrap();
             
             expect($bootstrap.fn.jquery).toBe('2.1.4');
 
+            var window = require('window-handle').getWindow();
             expect(window.$).not.toBeDefined();
             expect(window.jQuery).not.toBeDefined();
 
