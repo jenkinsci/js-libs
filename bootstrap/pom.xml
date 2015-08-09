@@ -7,12 +7,12 @@
     <parent>
         <groupId>org.jenkins-ci.ui</groupId>
         <artifactId>js-module-base</artifactId>
-        <version>1.0-beta-2-SNAPSHOT</version>
+        <version>1.0-beta-3-SNAPSHOT</version>
         <relativePath>../js-module-base</relativePath>
     </parent>
     <groupId>org.jenkins-ci.ui</groupId>
     <artifactId>bootstrap</artifactId>
-    <version>1.0-beta-2-SNAPSHOT</version>
+    <version>1.0-beta-3-SNAPSHOT</version>
     <packaging>hpi</packaging>
 
     <name>UI Frameworks: Twitter Bootstrap Browserified Jenkins modules</name>
@@ -27,7 +27,7 @@
         <dependency>
             <groupId>org.jenkins-ci.ui</groupId>
             <artifactId>jquery-detached</artifactId>
-            <version>1.0-beta-2-SNAPSHOT</version>
+            <version>1.0-beta-3-SNAPSHOT</version>
         </dependency>
     </dependencies>
 

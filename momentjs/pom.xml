@@ -6,12 +6,12 @@
     <parent>
         <groupId>org.jenkins-ci.ui</groupId>
         <artifactId>js-module-base</artifactId>
-        <version>1.0-beta-2-SNAPSHOT</version>
+        <version>1.0-beta-3-SNAPSHOT</version>
         <relativePath>../js-module-base</relativePath>
     </parent>
     <groupId>org.jenkins-ci.ui</groupId>
     <artifactId>momentjs</artifactId>
-    <version>1.0-beta-2-SNAPSHOT</version>
+    <version>1.0-beta-3-SNAPSHOT</version>
     <packaging>hpi</packaging>
 
     <name>UI Frameworks: Moment.js Browserified Jenkins modules</name>
