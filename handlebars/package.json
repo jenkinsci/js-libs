@@ -11,6 +11,6 @@
   },
   "dependencies": {
     "handlebars": "^3.0.3",
-    "jenkins-modules": "1.0.0"
+    "jenkins-modules": "1.1.1"
   }
 }

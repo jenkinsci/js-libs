@@ -10,7 +10,7 @@
     "jenkins-js-builder": "0.0.10"
   },
   "dependencies": {
-    "jenkins-modules": "1.0.0",
+    "jenkins-modules": "1.1.1",
     "jquery-detached-2.1.4": "^2.1.4-v2",
     "jqueryui-detached-1.11": "^1.11.4-v4",
     "window-handle": "0.0.6"
