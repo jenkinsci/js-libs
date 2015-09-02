@@ -71,3 +71,7 @@ builder.bundle('src/main/js/myapp.js')
     
 All of the above "magically" translates the appropriate bits of your app bundle's JS code to use async `import` calls
 (see below) in a way that just works.
+
+[Handlebars]: http://handlebarsjs.com/
+[jenkins-js-builder]: https://github.com/tfennelly/jenkins-js-builder
+[jenkins-js-modules]: https://github.com/tfennelly/jenkins-js-modules
