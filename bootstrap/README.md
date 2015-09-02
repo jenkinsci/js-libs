@@ -21,7 +21,7 @@ Your plugin needs to add a dependency on this plugin (to ensure it gets installe
 # Using Bootstrap v3:
 
 * __Bundle Id__: `bootstrap:bootstrap3`
-* __CSS Namespace__: `bootstrap-3` (the namespace in which all CSS rules are scoped)
+* __CSS Namespace__: `bootstrap-3` (see below for more details)
 
 There are 2 ways of using `bootstrap:bootstrap3` in your app bundle:
  

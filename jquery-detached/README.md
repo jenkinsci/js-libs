@@ -3,8 +3,8 @@ jQuery (via [jquery-detached]) and jQuery UI (via [jqueryui-detached]) module bu
 `import` this bundle (see [jenkins-js-modules]) into your application bundle (in your plugin etc) instead of bundling
 jQuery or jQuery UI in your application bundle, making your app bundle considerably lighter.
 
-`import`<sub>ing</sub> jQueryUI bundle will also result in the jQueryUI CSS being added to the page (namespaced).
- See below for more details.
+`import`<sub>ing</sub> the jQuery UI bundle will also result in the jQuery UI CSS being added to the page (namespaced).
+See below for more details.
 
 # HPI Dependency
 Your plugin needs to add a dependency on this plugin (to ensure it gets installed in Jenkins). 
@@ -91,7 +91,7 @@ require('jenkins-js-modules')
 # Using jQuery UI v1:
 
 * __Bundle Id__: `jquery-detached:jqueryui1`
-* __CSS Namespace__: `jquery-ui-1` (the namespace in which all CSS rules are scoped)
+* __CSS Namespace__: `jquery-ui-1` (see below for more details)
 
 There are 2 ways of using `jquery-detached:jqueryui1` in your app bundle:
  
