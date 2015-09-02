@@ -74,8 +74,6 @@ All of the above "magically" translates the appropriate bits of your app bundle'
 ## `import` (async)  
 You can also use the lower level asynchronous `import` call ([jenkins-js-modules]) to get your `$bootstrap` reference.  
 
-To use in a Jenkins plugin JavaScript module (CommonJS style):
-
 ```javascript
 require('jenkins-js-modules')
     .import('bootstrap:bootstrap3')
