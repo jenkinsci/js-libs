@@ -1,4 +1,4 @@
-jQuery (via [jquery-detached]) and jQuery UI (via [jqueryui-detached]) module bundles (see [jenkins-js-modules]).
+Module bundles for jQuery and jQuery UI (via [jquery-detached] and [jqueryui-detached]) (see [jenkins-js-modules]).
 
 `import` this bundle (see [jenkins-js-modules]) into your application bundle (in your plugin etc) instead of bundling
 jQuery or jQuery UI in your application bundle, making your app bundle considerably lighter.
