@@ -7,4 +7,4 @@ framework libs in their bundle, making them lighter etc.
   
 See the README.md files for the different bundle plugins (sub-modules of this repo) for details on how to use them.  
 
-[jenkins-js-modules](https://github.com/tfennelly/jenkins-js-modules)
+[jenkins-js-modules]: https://github.com/tfennelly/jenkins-js-modules
