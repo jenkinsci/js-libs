@@ -6,15 +6,15 @@
     <parent>
         <groupId>org.jenkins-ci.ui</groupId>
         <artifactId>js-module-base</artifactId>
-        <version>1.0-beta-3-SNAPSHOT</version>
+        <version>1.0-beta-4-SNAPSHOT</version>
         <relativePath>../js-module-base</relativePath>
     </parent>
     <groupId>org.jenkins-ci.ui</groupId>
     <artifactId>jquery-detached</artifactId>
-    <version>1.0-beta-3-SNAPSHOT</version>
+    <version>1.0-beta-4-SNAPSHOT</version>
     <packaging>hpi</packaging>
 
-    <name>UI Frameworks: jQuery Browserified Jenkins modules</name>
+    <name>Lib Bundle: jQuery bundles (jQuery and jQuery UI) plugin</name>
     <licenses>
         <license>
             <name>MIT License</name>

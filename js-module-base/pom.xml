@@ -10,10 +10,10 @@
     </parent>
     <groupId>org.jenkins-ci.ui</groupId>
     <artifactId>js-module-base</artifactId>
-    <version>1.0-beta-3-SNAPSHOT</version>
+    <version>1.0-beta-4-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-    <name>UI Frameworks: Module parent pom</name>
+    <name>Lib Bundle: Module parent pom</name>
     <url>TODO</url>
 
     <properties>
