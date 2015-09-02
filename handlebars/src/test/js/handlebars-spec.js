@@ -12,7 +12,7 @@ describe("handlebars3.js", function () {
             // load handlebars3 to force the export
             require("../../../handlebars3");
             
-            var jenkins = require('jenkins-modules');
+            var jenkins = require('jenkins-js-modules');
             jenkins.import("handlebars:handlebars3")
                 .then(function(handlebars3) {                    
                     expect(handlebars3).toBeDefined();                                        

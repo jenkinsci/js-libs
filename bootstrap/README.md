@@ -10,8 +10,8 @@ var $bootstrap;
 // Need to make sure you add the relevant assertions to check that `$bootstrap` is initialised (see below). 
 //
 
-// See https://www.npmjs.com/package/jenkins-modules
-require('jenkins-modules').import('bootstrap:bootstrap3')
+// See https://www.npmjs.com/package/jenkins-js-modules
+require('jenkins-js-modules').import('bootstrap:bootstrap3')
     .then(function(bootstrap3) {
         $bootstrap = bootstrap3.getBootstrap();
         
