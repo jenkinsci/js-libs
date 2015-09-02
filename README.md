@@ -2,7 +2,7 @@
 
 This repository contains a number JavaScript libraries packaged as Jenkins bundle plugins that `export`
 themselves to [jenkins-js-modules], allowing their top level module (JavaScript framework library) to be
-`import`ed by modules in other bundles. This means that those "other" bundles do not need to include these
+`import`<sub>ed</sub> by modules in other bundles. This means that those "other" bundles do not need to include these
 framework libs in their bundle, making them lighter etc.
   
 See the README.md files for the different bundle plugins (sub-modules of this repo) for details on how to use them.  
