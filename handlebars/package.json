@@ -1,6 +1,6 @@
 {
   "name": "jenkins-handlebars-rt",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Jenkins CI Handlebars Runtime JavaScript module",
   "author": "Tom Fennelly <tom.fennelly@gmail.com> (https://github.com/tfennelly)",
   "license": "MIT",
