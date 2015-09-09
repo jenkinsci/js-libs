@@ -159,7 +159,7 @@ require('jenkins-js-modules')
 > in order for the subsequent `import` to work without failure. This is not an issue when using the synchronous `require`
 > approach (see above) because the bundle `import` is only introduced to the JS code as the bundle is being created.
 
-## CSS Namespacing
+## CSS Namespacing / Scoping
 `import`<sub>ing</sub> this bundle will also result in the jQuery UI CSS being added to the page (namespaced).
 In order to apply jQuery UI v1 CSS rules to portions of page markup, the markup will need to be enclosed in an element
 containing the `jquery-ui-1` class.
@@ -173,7 +173,36 @@ containing the `jquery-ui-1` class.
 > __Note__: Namespacing the CSS rules makes it safer to use multiple versions of the same CSS lib on the same page. 
 
 
+### Namespacing pitfalls 
+The above trick of wrapping the content in a `<div class="jquery-ui-1">` will not work for all jQuery UI
+widgets because, in some cases, jQuery UI will unwrap the content and move it somewhere else before rendering. The
+[Dialog] is one such widget that exhibits this behaviour (and apparently
+[Autocomplete](https://jqueryui.com/autocomplete/) too).
+  
+Working around this is not all that difficult, but is a bit of a pain. The trick is to do the namespace wrapping
+via JavaScript after the [Dialog] has been rendered (and jQuery UI has done it's thing). In the case of the
+[Dialog] widget, it offers a `dialogClass` configuration option which can help with locating of the dialog
+post rendering.
+  
+```javascript
+$('#modal-dialog-content').dialog({
+    dialogClass: "jenkins-plugin-XYZ-dialog",
+    modal: true,
+    buttons: {
+        Ok: function () {
+            $(this).dialog("close");
+            // etc
+        }
+    }
+});
+
+// Use the dialogClass (from the options - see above) to locate
+// the dialog and then wrap...
+$('.jenkins-plugin-XYZ-dialog').wrap('<div class="jquery-ui-1"></div>');
+```  
+
 [jquery-detached]: https://github.com/tfennelly/jquery-detached
 [jqueryui-detached]: https://github.com/tfennelly/jqueryui-detached
 [jenkins-js-builder]: https://github.com/tfennelly/jenkins-js-builder
 [jenkins-js-modules]: https://github.com/tfennelly/jenkins-js-modules
+[Dialog]: https://jqueryui.com/dialog/
