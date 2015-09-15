@@ -1,4 +1,4 @@
 <?jelly escape-by-default='true'?>
 <div>
-  Handlebars Browserified Jenkins modules.
+  JavaScript GUI Lib: Handlebars bundle plugin.
 </div>

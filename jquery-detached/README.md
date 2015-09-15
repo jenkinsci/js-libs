@@ -13,7 +13,7 @@ Your plugin needs to add a dependency on this plugin (to ensure it gets installe
 <artifactItem>
     <groupId>org.jenkins-ci.ui</groupId>
     <artifactId>jquery-detached</artifactId>
-    <version>1.0-beta-4-SNAPSHOT</version>
+    <version>1.0</version>
 </artifactItem>
 ```
 

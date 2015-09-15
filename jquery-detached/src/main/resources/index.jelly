@@ -1,4 +1,4 @@
 <?jelly escape-by-default='true'?>
 <div>
-  jQuery JavaScript modules.
+  JavaScript GUI Lib: jQuery bundles (jQuery and jQuery UI) plugin.
 </div>

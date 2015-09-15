@@ -6,15 +6,17 @@
     <parent>
         <groupId>org.jenkins-ci.ui</groupId>
         <artifactId>js-module-base</artifactId>
-        <version>1.0-beta-4-SNAPSHOT</version>
+        <version>1.0</version>
         <relativePath>../js-module-base</relativePath>
     </parent>
     <groupId>org.jenkins-ci.ui</groupId>
     <artifactId>momentjs</artifactId>
-    <version>1.0-beta-4-SNAPSHOT</version>
+    <version>1.0</version>
     <packaging>hpi</packaging>
 
-    <name>Lib Bundle: Moment.js bundle plugin</name>
+    <name>JavaScript GUI Lib: Moment.js bundle plugin</name>
+    <url>https://github.com/jenkinsci/js-libs/tree/master/momentjs</url>
+    
     <licenses>
         <license>
             <name>MIT License</name>
