@@ -24,7 +24,7 @@ Your plugin needs to add a dependency on this plugin (to ensure it gets installe
 
 There are 2 ways of using `jquery-detached:jquery2` in your app bundle:
  
-1. Normal `require` syntax (synchronous) on the `jquery-detached-2.1.4` NPM module, and then using a `withExternalModuleMapping` instruction ([jenkins-js-builder]) in the app bundle's `gulpfile.js`.  
+1. Normal `require` syntax (synchronous) on the `jquery-detached@2` NPM module, and then using a `withExternalModuleMapping` instruction ([jenkins-js-builder]) in the app bundle's `gulpfile.js`.  
 1. Lower level `import` syntax (asynchronous).
   
 ## `require` (sync)
@@ -32,22 +32,22 @@ If using [jenkins-js-builder] to create yor application bundle, you can code you
 use the more simple CommonJS style `require` syntax (synch), as opposed to the lower level `import` syntax (async)
 of [jenkins-js-modules].
    
-When doing it this way, your module code should require the `jquery-detached-2.1.4` NPM module and
+When doing it this way, your module code should require the `jquery-detached@2` NPM module and
 call `getJQuery` to get the jQuery (`$`) instance e.g.
 
 ```javascript
-var $ = require('jquery-detached-2.1.4').getJQuery();
+var $ = require('jquery-detached').getJQuery();
 
 var header = $('#header');
 ```
     
-> __Note__: You should install `jquery-detached-2.1.4` as a dev dependency i.e. `npm install --save-dev jquery-detached-2.1.4`
+> __Note__: You should install `jquery-detached@2` as a dev dependency i.e. `npm install --save-dev jquery-detached@2`
     
 The above code will work fine as is, but the only downside is that your app bundle will be very bloated as it will
 include jQuery. To lighten your bundle for the browser (by using a shared instance of jQuery),
 use [jenkins-js-builder] to create your app bundle (in your `gulpfile.js`), telling it to "map" (transform) all
-synchronous `require` calls for `jquery-detached-2.1.4` to async `import`<sub>s</sub> of the `jquery-detached:jquery2`
-bundle module (which actually `export`<sub>s</sub> `jquery-detached-2.1.4`) e.g.
+synchronous `require` calls for `jquery-detached` to async `import`<sub>s</sub> of the `jquery-detached:jquery2`
+bundle module (which actually `export`<sub>s</sub> `jquery-detached`) e.g.
 
 ```javascript
 var builder = require('jenkins-js-builder');
@@ -58,11 +58,11 @@ var builder = require('jenkins-js-builder');
 builder.defineTasks(['test', 'bundle']);
 
 //
-// Create the app bundle, mapping sync require calls for 'jquery-detached-2.1.4' to 
+// Create the app bundle, mapping sync require calls for 'jquery-detached' to 
 // async imports of 'jquery-detached:jquery2'.
 //
 builder.bundle('src/main/js/myapp.js')
-    .withExternalModuleMapping('jquery-detached-2.1.4', 'jquery-detached:jquery2')
+    .withExternalModuleMapping('jquery-detached', 'jquery-detached:jquery2')
     .inDir('src/main/webapp/bundles');
 ```
     
@@ -83,7 +83,7 @@ require('jenkins-js-modules')
 ```
 
 > __Note__: Using this async `import` approach makes unit testing of your JavaScript modules more tricky because 
-> your test scaffolding code will need to manually `export` the `jquery-detached-2.1.4` module as `jquery-detached:jquery2`
+> your test scaffolding code will need to manually `export` the `jquery-detached` module as `jquery-detached:jquery2`
 > in order for the subsequent `import` to work without failure. This is not an issue when using the synchronous `require`
 > approach (see above) because the bundle `import` is only introduced to the JS code as the bundle is being created.
 

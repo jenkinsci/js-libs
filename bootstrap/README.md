@@ -25,7 +25,7 @@ Your plugin needs to add a dependency on this plugin (to ensure it gets installe
 
 There are 2 ways of using `bootstrap:bootstrap3` in your app bundle:
  
-1. Normal `require` syntax (synchronous) on the `bootstrap-detached-3.3` NPM module, and then using a `withExternalModuleMapping` instruction ([jenkins-js-builder]) in the app bundle's `gulpfile.js`.  
+1. Normal `require` syntax (synchronous) on the `bootstrap-detached` NPM module, and then using a `withExternalModuleMapping` instruction ([jenkins-js-builder]) in the app bundle's `gulpfile.js`.  
 1. Lower level `import` syntax (asynchronous).
   
 ## `require` (sync)
@@ -33,23 +33,23 @@ If using [jenkins-js-builder] to create yor application bundle, you can code you
 use the more simple CommonJS style `require` syntax (synch), as opposed to the lower level `import` syntax (async)
 of [jenkins-js-modules].
    
-When doing it this way, your module code should require the `bootstrap-detached-3.3` NPM module and
+When doing it this way, your module code should require the `bootstrap-detached` NPM module and
 call `getBootstrap` to get the Bootstrap instance (a clean/pristine jQuery instance decorated with the 
 bootstrap plugin) e.g.
 
 ```javascript
-var $bootstrap = require('bootstrap-detached-3.3').getBootstrap();
+var $bootstrap = require('bootstrap-detached').getBootstrap();
 
 $bootstrap('[data-toggle="popover"]').popover();
 ```
     
-> __Note__: You should install `bootstrap-detached-3.3` as a dev dependency i.e. `npm install --save-dev bootstrap-detached-3.3`
+> __Note__: You should install `bootstrap-detached@3` as a dev dependency i.e. `npm install --save-dev bootstrap-detached@3`
     
 The above code will work fine as is, but the only downside is that your app bundle will be very bloated as it will
 include both jquery and twitter bootstrap. To lighten your bundle for the browser (by using a shared instance of bootstrap),
 use [jenkins-js-builder] to create your app bundle (in your `gulpfile.js`), telling it to "map" (transform) all
-synchronous `require` calls for `bootstrap-detached-3.3` to async `import`<sub>s</sub> of the `bootstrap:bootstrap3`
-bundle (which actually `export`<sub>s</sub> `bootstrap-detached-3.3`) e.g.
+synchronous `require` calls for `bootstrap-detached` to async `import`<sub>s</sub> of the `bootstrap:bootstrap3`
+bundle (which actually `export`<sub>s</sub> `bootstrap-detached@3`) e.g.
 
 ```javascript
 var builder = require('jenkins-js-builder');
@@ -60,11 +60,11 @@ var builder = require('jenkins-js-builder');
 builder.defineTasks(['test', 'bundle']);
 
 //
-// Create the app bundle, mapping sync require calls for 'bootstrap-detached-3.3' to 
+// Create the app bundle, mapping sync require calls for 'bootstrap-detached' to 
 // async imports of 'bootstrap:bootstrap3'.
 //
 builder.bundle('src/main/js/myapp.js')
-    .withExternalModuleMapping('bootstrap-detached-3.3', 'bootstrap:bootstrap3')
+    .withExternalModuleMapping('bootstrap-detached', 'bootstrap:bootstrap3')
     .inDir('src/main/webapp/bundles');
 ```
     
@@ -85,7 +85,7 @@ require('jenkins-js-modules')
 ```
 
 > __Note__: Using this async `import` approach makes unit testing of your JavaScript modules more tricky because 
-> your test scaffolding code will need to manually `export` the `bootstrap-detached-3.3` module as `bootstrap:bootstrap3`
+> your test scaffolding code will need to manually `export` the `bootstrap-detached` module as `bootstrap:bootstrap3`
 > in order for the subsequent `import` to work without failure. This is not an issue when using the synchronous `require`
 > approach (see above) because the bundle `import` is only introduced to the JS code as the bundle is being created.
 
