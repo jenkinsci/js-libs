@@ -16,6 +16,7 @@
         <module>bootstrap</module>
         <module>handlebars</module>
         <module>momentjs</module>
+        <module>ace-editor</module>
     </modules>
 
 </project>
