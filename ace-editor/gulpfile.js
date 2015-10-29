@@ -1,13 +1,15 @@
 var builder = require('jenkins-js-builder');
 
 //
-// Use the predefined tasks from jenkins-js-builder.
+// Bundle modules.
 //
-builder.defineTasks(['test', 'bundle']);
+builder.bundle('src/main/js/ace-editor-119.js')
+    .asJenkinsModuleResource(); // manually exported
+builder.bundle('src/main/js/ace-editor-122.js')
+    .asJenkinsModuleResource(); // manually exported
 
 //
-// Bundle the module.
+// Test bundle
 //
-builder.bundle('jenkins-ace-editor', 'aceeditor119')
-    .asJenkinsModuleResource()
-    .export();
+builder.bundle('src/main/js/test.js')
+    .asJenkinsModuleResource(); // not exported
