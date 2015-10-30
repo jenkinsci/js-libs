@@ -53,13 +53,16 @@ function processQueue() {
 function hasActiveACEScripts() {
     var scripts = getHeadElement().getElementsByTagName("script");
     for (var i = 0; i < scripts.length; i++) {
-        var src = scripts[i].getAttribute('src');     
         // Is it an ace-editor script?
-        if (src && src.indexOf('plugin/ace-editor/packs/') !== -1) {
+        if (isACEScript(scripts[i].getAttribute('src')) || isACEScript(scripts[i].getAttribute('data-referrer'))) {
             return true;
         }
     }    
     return false;
+}
+
+function isACEScript(url) {
+    return (url && url.indexOf('plugin/ace-editor/packs/') !== -1);
 }
 
 function getHeadElement() {

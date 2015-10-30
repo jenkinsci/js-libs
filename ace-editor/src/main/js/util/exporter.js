@@ -17,10 +17,12 @@ exports.exportACE = function(acepack) {
 
 function ACEPack(acepack) {
     this.acepack = acepack;
+    this.jsMapping = [];
 }
 
 ACEPack.prototype.setACE = function (ace) {
     var net = ace.require('ace/lib/net');
+    var acePack = this;
 
     // We replace ACE's own loadScript function with our own so as to
     // track the load state via the data-onload-complete attribute.
@@ -29,11 +31,20 @@ ACEPack.prototype.setACE = function (ace) {
         jenkinsJSModules.addScript(path, {
             scriptSrcBase: '',
             success: callback,
-            removeElementOnLoad: true
+            removeElementOnLoad: true,
+            scriptSrcMap: acePack.jsMapping
         });
     };
     
     this.ace = ace;
+};
+
+ACEPack.prototype.addPackOverride = function (packRes, override) {
+    this.jsMapping.push({
+            from: 'plugin/ace-editor/packs/' + this.acepack + '/' + packRes,
+            to: 'plugin/ace-editor/' + override
+        }
+    );
 };
 
 ACEPack.prototype.addScript = function (scriptName, callback) {
