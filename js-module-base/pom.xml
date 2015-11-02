@@ -18,62 +18,70 @@
 
     <properties>
         <!-- TODO: Move to parent pom -->
-        <iojs.dist.baseurl>https://iojs.org/dist</iojs.dist.baseurl>
-        <iojs.version>2.5.0</iojs.version>
-        <npm.dist.baseurl>http://registry.npmjs.org/npm/-</npm.dist.baseurl>
+        <node.version>4.0.0</node.version>
         <npm.version>2.13.1</npm.version>
     </properties>
 
     <!-- TODO: Move all of these profiles to a parent pom -->
     <profiles>
 
+        <!--
+            Manually download node and NPM for the frontend plugin so it gets cached in the local maven repo.
+            Otherwise frontend will be downloading it all the time. The download-maven-plugin
+            caches it's downloads.
+        -->
         <profile>
             <id>node-classifier-linux</id>
             <activation>
-                <os>
-                    <family>Linux</family>
-                    <arch>amd64</arch>
-                </os>
+                <os><family>Linux</family><arch>amd64</arch></os>
             </activation>
             <properties>
-                <iojs.download.file.prefix>iojs-v${iojs.version}-linux-x64</iojs.download.file.prefix>
-                <iojs.download.file>${iojs.download.file.prefix}.tar.gz</iojs.download.file>
-                <iojs.download.unpack>true</iojs.download.unpack>
-                <iojs.download.exe.path>${iojs.download.file.prefix}/bin/iojs</iojs.download.exe.path>
-                <node.exe.file>node</node.exe.file>
+                <node.download.file>node-v${node.version}-linux-x64.tar.gz</node.download.file>
+                <node.download.classifier></node.download.classifier>
             </properties>
         </profile>
         <profile>
             <id>node-classifier-mac</id>
             <activation>
-                <os>
-                    <family>mac</family>
-                </os>
+                <os><family>mac</family></os>
             </activation>
             <properties>
-                <iojs.download.file.prefix>iojs-v${iojs.version}-darwin-x64</iojs.download.file.prefix>
-                <iojs.download.file>${iojs.download.file.prefix}.tar.gz</iojs.download.file>
-                <iojs.download.unpack>true</iojs.download.unpack>
-                <iojs.download.exe.path>${iojs.download.file.prefix}/bin/iojs</iojs.download.exe.path>
-                <node.exe.file>node</node.exe.file>
+                <node.download.file>node-v${node.version}-darwin-x64.tar.gz</node.download.file>
+                <node.download.classifier></node.download.classifier>
             </properties>
         </profile>
         <profile>
             <id>node-classifier-windows</id>
             <activation>
-                <os>
-                    <family>windows</family>
-                </os>
+                <os><family>windows</family><arch>x64</arch></os>
             </activation>
             <properties>
-                <iojs.download.file>win-x64/iojs.exe</iojs.download.file>
-                <iojs.download.unpack>false</iojs.download.unpack>
-                <iojs.download.exe.path>iojs.exe</iojs.download.exe.path>
-                <node.exe.file>node.exe</node.exe.file>
+                <node.download.file>win-x64/node.exe</node.download.file>
+                <node.download.classifier>/x64</node.download.classifier>
             </properties>
         </profile>
         <profile>
-            <id>iojs-download</id>
+            <id>node-classifier-windows-amd64</id>
+            <activation>
+                <os><family>windows</family><arch>amd64</arch></os>
+            </activation>
+            <properties>
+                <node.download.file>win-x64/node.exe</node.download.file>
+                <node.download.classifier>/x64</node.download.classifier>
+            </properties>
+        </profile>
+        <profile>
+            <id>node-classifier-windows-x86</id>
+            <activation>
+                <os><family>windows</family><arch>x86</arch></os>
+            </activation>
+            <properties>
+                <node.download.file>win-x86/node.exe</node.download.file>
+                <node.download.classifier></node.download.classifier>
+            </properties>
+        </profile>
+        <profile>
+            <id>node-download</id>
             <activation>
                 <file>
                     <exists>package.json</exists>
@@ -87,15 +95,15 @@
                         <version>1.2.1</version>
                         <executions>
                             <execution>
-                                <id>get-iojs</id>
+                                <id>get-node</id>
                                 <phase>initialize</phase>
                                 <goals>
                                     <goal>wget</goal>
                                 </goals>
                                 <configuration>
-                                    <url>${iojs.dist.baseurl}/v${iojs.version}/${iojs.download.file}</url>
-                                    <unpack>${iojs.download.unpack}</unpack>
-                                    <outputDirectory>${project.build.directory}/iojs</outputDirectory>
+                                    <url>https://nodejs.org/dist/v${node.version}/${node.download.file}</url>
+                                    <unpack>false</unpack>
+                                    <outputDirectory>${project.build.directory}/frontend/v${node.version}${node.download.classifier}</outputDirectory>
                                 </configuration>
                             </execution>
                             <execution>
@@ -105,10 +113,10 @@
                                     <goal>wget</goal>
                                 </goals>
                                 <configuration>
-                                    <url>${npm.dist.baseurl}/npm-${npm.version}.tgz</url>
+                                    <url>http://registry.npmjs.org/npm/-/npm-${npm.version}.tgz</url>
                                     <unpack>false</unpack>
-                                    <outputDirectory>${project.build.directory}</outputDirectory>
-                                    <outputFileName>npm-${npm.version}.tar.gz</outputFileName>
+                                    <outputDirectory>${project.build.directory}/frontend/</outputDirectory>
+                                    <outputFileName>npm-${npm.version}.tgz</outputFileName>
                                 </configuration>
                             </execution>
                         </executions>
@@ -116,82 +124,6 @@
                 </plugins>
             </build>
         </profile>
-        <profile>
-            <id>iojs-npm-install</id>
-            <activation>
-                <file>
-                    <exists>package.json</exists>
-                </file>
-            </activation>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-antrun-plugin</artifactId>
-                        <version>1.8</version>
-                        <executions>
-                            <execution>
-                                <!-- 
-                                Need this shenanigans because maven doesn't seem to support multiple file exists/missing 
-                                activations, so need to use in combo with ant-run. This was supposed to have been fixed
-                                in maven v3.2.2, but that is not what we have seen here. 
-                                -->
-                                <id>check.for.node</id>
-                                <phase>initialize</phase>
-                                <configuration>
-                                    <target name="check.for.node">
-                                        <condition property="node.already.installed" value="true" else="false">
-                                            <resourceexists>
-                                                <file file="node/${node.exe.file}"/>
-                                            </resourceexists>
-                                        </condition>
-                                    </target>
-                                    <exportAntProperties>true</exportAntProperties>
-                                </configuration>
-                                <goals>
-                                    <goal>run</goal>
-                                </goals>
-                            </execution>
-                            <execution>
-                                <id>install</id>
-                                <phase>initialize</phase>
-                                <configuration>
-                                    <target name="install" unless="${node.already.installed}">
-                                        <!-- 
-                                        Rest everything
-                                        -->
-                                        <delete dir="node"/>
-                                        <mkdir dir="node"/>
-                                        <!-- 
-                                        Copy the iojs/node and npm exe files to where the
-                                        frontend-maven plugin expects to find them. 
-                                        -->
-                                        <copy file="${project.build.directory}/iojs/${iojs.download.exe.path}"
-                                              tofile="node/${node.exe.file}"/>
-                                        <untar src="${project.build.directory}/npm-${npm.version}.tar.gz" dest="node"
-                                               compression="gzip"/>
-                                        <move file="node/package" tofile="node/npm"/>
-                                        <chmod perm="755">
-                                            <fileset dir="node">
-                                                <include name="node"/>
-                                                <include name="node.exe"/>
-                                            </fileset>
-                                            <fileset dir="node/npm/bin">
-                                                <include name="**/*"/>
-                                            </fileset>
-                                        </chmod>
-                                    </target>
-                                </configuration>
-                                <goals>
-                                    <goal>run</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-
         <profile>
             <id>gulp-execution</id>
             <activation>
@@ -225,9 +157,23 @@
                         <groupId>com.github.eirslett</groupId>
                         <artifactId>frontend-maven-plugin</artifactId>
                         <version>0.0.23</version>
-        
+
                         <executions>
-        
+
+                            <execution>
+                                <phase>initialize</phase>
+                                <id>install node and npm</id>
+                                <goals>
+                                    <goal>install-node-and-npm</goal>
+                                </goals>
+                                <configuration>
+                                    <nodeVersion>v${node.version}</nodeVersion>
+                                    <npmVersion>${npm.version}</npmVersion>
+                                    <!-- Use the pre-download node and npm packages. See download-maven-plugin config above. -->
+                                    <downloadRoot>${project.baseUri}target/frontend/</downloadRoot>
+                                </configuration>
+                            </execution>
+
                             <execution>
                                 <phase>initialize</phase>
                                 <id>npm install</id>
@@ -239,34 +185,34 @@
                                     <arguments>install</arguments>
                                 </configuration>
                             </execution>
-        
+
                             <execution>
                                 <phase>generate-sources</phase>
                                 <id>gulp bundle</id>
                                 <goals>
                                     <goal>gulp</goal>
                                 </goals>
-                                <configuration><arguments>bundle</arguments></configuration>
+                                <configuration>
+                                    <arguments>bundle</arguments>
+                                </configuration>
                             </execution>
-        
+
                             <execution>
                                 <phase>test</phase>
                                 <id>gulp test</id>
                                 <goals>
                                     <goal>gulp</goal>
                                 </goals>
-                                <configuration><arguments>test</arguments></configuration>
                             </execution>
-        
+
                         </executions>
                     </plugin>
                 </plugins>
             </build>
-        </profile>        
-        
-        
+        </profile>
+
         <profile>
-            <id>clean-node_modules</id>
+            <id>clean-node</id>
             <activation>
                 <file>
                     <exists>package.json</exists>
@@ -295,7 +241,7 @@
                     </plugin>
                 </plugins>
             </build>
-        </profile>           
+        </profile>      
         
     </profiles>
     
