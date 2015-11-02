@@ -69,7 +69,7 @@ function getHeadElement() {
     var window = windowHandle.getWindow();
     var docHead = window.document.getElementsByTagName("head");
 
-    if (!docHead || docHead.length == 0) {
+    if (!docHead || docHead.length === 0) {
         throw 'No head element found in document.';
     }
     

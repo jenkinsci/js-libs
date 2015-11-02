@@ -13,3 +13,7 @@ builder.bundle('src/main/js/ace-editor-122.js')
 //
 builder.bundle('src/main/js/test.js')
     .asJenkinsModuleResource(); // not exported
+
+builder.onTaskStart('appTest', function() {
+    builder.startTestWebServer({root: './src/test/webroot'});
+});

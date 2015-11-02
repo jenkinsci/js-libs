@@ -1,27 +1,8 @@
 var jenkinsJSModules = require('jenkins-js-modules');
+var theWindow = require('window-handle').getWindow();
 
-//jenkinsJSModules.import('ace-editor:ace-editor-119')
-//    .onFulfilled(function (acePack) {
-//        acePack.edit('editor1', function() {
-//            var ace = acePack.ace;
-//            var editor = this.editor;
-//                        
-//            acePack.addScript('ext-language_tools.js', function() {
-//                ace.require("ace/ext/language_tools");
-//                editor.session.setMode("ace/mode/javascript");
-//                editor.setTheme("ace/theme/twilight");
-//                editor.setAutoScrollEditorIntoView(true);
-//                editor.setOption("maxLines", 30);
-//                // enable autocompletion and snippets
-//                editor.setOptions({
-//                    enableBasicAutocompletion: true,
-//                    enableSnippets: true,
-//                    enableLiveAutocompletion: false
-//                });
-//            });
-//        });
-//    });
-//
+theWindow.aceEditors = {};
+
 jenkinsJSModules.import('ace-editor:ace-editor-122')
     .onFulfilled(function (acePack) {
         acePack.edit('editor2', function() {
@@ -42,19 +23,8 @@ jenkinsJSModules.import('ace-editor:ace-editor-122')
                     enableSnippets: true,
                     enableLiveAutocompletion: false
                 });
-//                
-//                function setGroovySnippets() {
-//                    var groovySnippets = ace.require('ace/snippets/groovy');
-//                    
-//                    if (groovySnippets) {
-//                        groovySnippets.snippetText = groovySnippetText;
-//                    } else {
-//                        setTimeout(function() {
-//                            setGroovySnippets();
-//                        }, 100);
-//                    }
-//                }
-//                setGroovySnippets();
+                
+                theWindow.aceEditors.e122 = editor;                
             });
         });
     });
