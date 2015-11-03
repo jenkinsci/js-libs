@@ -15,5 +15,6 @@ e.g.
 * [Twitter Bootstrap](https://github.com/jenkinsci/js-libs/tree/master/bootstrap)
 * [Moment.js](https://github.com/jenkinsci/js-libs/tree/master/momentjs)  
 * [Handlerbars.js](https://github.com/jenkinsci/js-libs/tree/master/handlerbars)  
+* [Numeral.js](https://github.com/jenkinsci/js-libs/tree/master/numeraljs)
 
 [jenkins-js-modules]: https://github.com/tfennelly/jenkins-js-modules

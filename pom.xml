@@ -17,6 +17,7 @@
         <module>handlebars</module>
         <module>momentjs</module>
         <module>ace-editor</module>
+        <module>numeraljs</module>
     </modules>
 
 </project>
