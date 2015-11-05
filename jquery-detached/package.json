@@ -6,7 +6,7 @@
   "license": "MIT",
   "devDependencies": {
     "gulp": "^3.9.0",
-    "jsdom": "3.1.2",
+    "jsdom": "7.0.2",
     "jenkins-js-builder": "0.0.19"
   },
   "dependencies": {
