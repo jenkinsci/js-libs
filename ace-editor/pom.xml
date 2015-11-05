@@ -11,7 +11,7 @@
     </parent>
     <groupId>org.jenkins-ci.ui</groupId>
     <artifactId>ace-editor</artifactId>
-    <version>0.9</version>
+    <version>1.0</version>
     <packaging>hpi</packaging>
 
     <name>JavaScript GUI Lib: ACE Editor bundle plugin</name>
