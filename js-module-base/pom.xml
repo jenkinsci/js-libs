@@ -258,4 +258,32 @@
         </pluginRepository>
     </pluginRepositories>
 
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-jar-plugin</artifactId>
+                <executions>
+                    <!--
+                        Create a .jar containing all the web resources/assets. Jenkins core can then include the lib
+                        and load the resources via the "${resURL}/assets/core/..." URL.
+                    -->
+                    <execution>
+                        <id>core-assets</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                        <phase>package</phase>
+                        <configuration>
+                            <classesDirectory>${project.basedir}/src/main/webapp</classesDirectory>
+                            <classifier>core-assets</classifier>
+                            <includes>
+                                <include>**/*</include>
+                            </includes>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
 </project>
