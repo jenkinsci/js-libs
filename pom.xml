@@ -19,4 +19,11 @@
         <module>ace-editor</module>
     </modules>
 
+    <scm>
+        <connection>scm:git:git://github.com/jenkinsci/js-libs.git</connection>
+        <developerConnection>scm:git:git@github.com:jenkinsci/js-libs.git</developerConnection>
+        <url>https://github.com/jenkinsci/js-libs</url>
+        <tag>HEAD</tag>
+    </scm>
+
 </project>
