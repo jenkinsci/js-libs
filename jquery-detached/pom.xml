@@ -11,7 +11,7 @@
     </parent>
     <groupId>org.jenkins-ci.ui</groupId>
     <artifactId>jquery-detached</artifactId>
-    <version>1.1</version>
+    <version>1.1.1</version>
     <packaging>hpi</packaging>
 
     <name>JavaScript GUI Lib: jQuery bundles (jQuery and jQuery UI) plugin</name>
