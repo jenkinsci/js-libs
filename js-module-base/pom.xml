@@ -10,7 +10,7 @@
     </parent>
     <groupId>org.jenkins-ci.ui</groupId>
     <artifactId>js-module-base</artifactId>
-    <version>1.0</version>
+    <version>1.1</version>
     <packaging>pom</packaging>
 
     <name>JavaScript GUI Lib: Module parent pom</name>
@@ -271,7 +271,7 @@
                 <!--
                     Need to manufacture a directory structure that allows us to have the above URL
                     structure. We symlink the content of the webapp dir. Remember, we are generating
-                    2 artifacts. A HPI with all the resources in it + this jar with the same resources,
+                    2 artifacts. 1) A HPI with all the resources in it and 2) this jar with the same resources,
                     but under a different dir structure. You'd think the maven-jar-plugin could do
                     this for us, but it doesn't seem like it can. We use the pluginId as the
                     asset namespace.

@@ -6,12 +6,12 @@
     <parent>
         <groupId>org.jenkins-ci.ui</groupId>
         <artifactId>js-module-base</artifactId>
-        <version>1.0</version>
+        <version>1.1</version>
         <relativePath>../js-module-base</relativePath>
     </parent>
     <groupId>org.jenkins-ci.ui</groupId>
     <artifactId>momentjs</artifactId>
-    <version>1.0</version>
+    <version>1.1-SNAPSHOT</version>
     <packaging>hpi</packaging>
 
     <name>JavaScript GUI Lib: Moment.js bundle plugin</name>

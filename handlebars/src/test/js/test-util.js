@@ -18,4 +18,4 @@ exports.onJenkinsPage = function(testFunc) {
             testFunc(window);
         }
     );    
-}
+};
