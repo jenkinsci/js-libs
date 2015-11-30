@@ -90,17 +90,26 @@ require('jenkins-js-modules')
 > approach (see above) because the bundle `import` is only introduced to the JS code as the bundle is being created.
 
 ## CSS Namespacing
-`import`<sub>ing</sub> this bundle will also result in the Twitter Bootstrap CSS being added to the page (namespaced).
-In order to apply Bootstrap 3 CSS rules to portions of page markup, the markup will need to be enclosed in an element
-containing the `bootstrap-3` class.
+This bundle includes a pre-canned namespaced CSS scoped in a HTML class value of `bootstrap-3`. 
+
+> __Note__: Namespacing the CSS rules makes it safer to use multiple versions of the same CSS lib on the same page. 
+
+To use it, you need to specify the `addDefaultCSS: true` option when specifying the `withExternalModuleMapping`
+config during bundle generation.
+
+```javascript
+builder.bundle('src/main/js/myapp.js')
+    .withExternalModuleMapping('bootstrap-detached', 'bootstrap:bootstrap3', {addDefaultCSS: true})
+    .inDir('src/main/webapp/bundles');
+```
+
+To use it, simply wrap the content in a `bootstrap-3` classed element as follows.
 
 ```html
 <div class="bootstrap-3">
    <!-- content in here can use Bootstrap 3 CSS rules. -->
 <div>
 ```
- 
-> __Note__: Namespacing the CSS rules makes it safer to use multiple versions of the same CSS lib on the same page. 
 
 # Notes
 
