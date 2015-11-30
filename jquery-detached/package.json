@@ -7,10 +7,10 @@
   "devDependencies": {
     "gulp": "^3.9.0",
     "jsdom": "7.0.2",
-    "jenkins-js-builder": "0.0.19"
+    "jenkins-js-builder": "0.0.33"
   },
   "dependencies": {
-    "jenkins-js-modules": "1.0.1",
+    "jenkins-js-modules": "1.4.0",
     "jquery-detached-2.1.4": "^2.1.4-v2",
     "jqueryui-detached-1.11": "^1.11.4-v9",
     "window-handle": "0.0.6"

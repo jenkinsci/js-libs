@@ -6,12 +6,12 @@
   "license": "MIT",
   "devDependencies": {
     "gulp": "^3.9.0",
-    "jenkins-js-builder": "0.0.28",
+    "jenkins-js-builder": "0.0.33",
     "jenkins-js-test": "0.0.15",
     "zombie": "^4.2.1"
   },
   "dependencies": {
-    "jenkins-js-modules": "1.3.0",
+    "jenkins-js-modules": "1.4.0",
     "window-handle": "0.0.6"
   }
 }
