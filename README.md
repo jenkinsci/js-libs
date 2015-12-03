@@ -5,8 +5,8 @@ This repository contains a collection of popular JavaScript libraries, packaged 
 `import`<sub>ed</sub> by modules in other bundles, allowing these other modules to remain as lightweight as possible,
 while still modular in nature.
 
-> See __[Sample Jenkins plugins using these Framework Libs](https://github.com/jenkinsci/js-samples)__. 
-> See __[jenkins-js-modules]__. 
+> - See __[Sample Jenkins plugins using these Framework Libs](https://github.com/jenkinsci/js-samples)__. 
+> - See __[jenkins-js-modules]__. 
 
 # Available Libs
 See the README.md files for the different bundle plugins (sub-modules of this repo) for details on how to use them
