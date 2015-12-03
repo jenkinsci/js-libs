@@ -23,10 +23,10 @@ the Handlebarsify module interacts with the bundling process. For that reason, i
 higher level `require` syntax (synchronous) on the `handlebars` NPM module, and then use a `withExternalModuleMapping`
 instruction ([jenkins-js-builder]) in the app bundle's `gulpfile.js`.  
 
-In either case, you should also add a runtime dependency on the `jenkins-handlebars-rt` NPM module:
+In either case, you should also add dev dependencies on the relevant [Handlebars] NPM packages:
 
 ```
-npm install --save jenkins-handlebars-rt
+npm install --save-dev jenkins-handlebars-rt hbsfy handlebars
 ```
   
 ## `require` (sync)
