@@ -26,7 +26,7 @@ instruction ([jenkins-js-builder]) in the app bundle's `gulpfile.js`.
 In either case, you should also add dev dependencies on the relevant [Handlebars] NPM packages:
 
 ```
-npm install --save-dev jenkins-handlebars-rt hbsfy handlebars
+npm install --save-dev jenkins-handlebars-rt hbsfy@2 handlebars@3
 ```
   
 ## `require` (sync)
