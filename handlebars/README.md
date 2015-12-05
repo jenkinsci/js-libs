@@ -10,9 +10,11 @@ Your plugin needs to add a dependency on this plugin (to ensure it gets installe
 <artifactItem>
     <groupId>org.jenkins-ci.ui</groupId>
     <artifactId>handlebars</artifactId>
-    <version>1.0</version>
+    <version>[VERSION]</version>
 </artifactItem>
 ```
+
+> See _[wiki.jenkins-ci.org](https://wiki.jenkins-ci.org/display/JENKINS/Handlebars.js)_ to get the latest version.
 
 # Using Handlebars v3:
 
