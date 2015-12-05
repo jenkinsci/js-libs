@@ -14,6 +14,7 @@ e.g.
 
 * [jQuery/jQueryUI](https://github.com/jenkinsci/js-libs/tree/master/jquery-detached)
 * [Twitter Bootstrap](https://github.com/jenkinsci/js-libs/tree/master/bootstrap)
+* [Ace Editor](https://github.com/jenkinsci/js-libs/tree/master/ace-editor)  
 * [Moment.js](https://github.com/jenkinsci/js-libs/tree/master/momentjs)  
 * [Handlebars.js](https://github.com/jenkinsci/js-libs/tree/master/handlebars)  
 * [Numeral.js](https://github.com/jenkinsci/js-libs/tree/master/numeraljs)
