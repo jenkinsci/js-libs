@@ -17,14 +17,14 @@ Your plugin needs to add a dependency on this plugin (to ensure it gets installe
 
 * __Bundle Id__: `ace-editor:ace-editor-122`
 
-Because of how the [Ace Editor] was developed, it is not possible to use it through the normal CommonJS
-synchronous `require`. Therefore, it is only possible to use it in Jenkins (via [jenkins-js-modules])
-by using the asynchronous `import`.
+Because of how the [Ace Editor] is implemented, it's not possible to use it via the preferred [CommonJS]
+synchronous `require`. It's only possible to use it in Jenkins by using the asynchronous `import`
+(via [jenkins-js-modules]).
 
 ```javascript
-var jenkinsJSModules = require('jenkins-js-modules');
+var jsModules = require('jenkins-js-modules');
 
-jenkinsJSModules.import('ace-editor:ace-editor-122')
+jsModules.import('ace-editor:ace-editor-122')
     .onFulfilled(function (acePack) {
         
         // 'ace-editor:ace-editor-122' supplies an "ACEPack" object.
@@ -48,7 +48,7 @@ jenkinsJSModules.import('ace-editor:ace-editor-122')
                 editor.setAutoScrollEditorIntoView(true);
                 editor.setOption("minLines", 20);
                 
-                // Etc ... hook the editor into your app's UI
+                // Etc ... hook editor events into your app's UI
             });            
         });
     });
@@ -58,5 +58,6 @@ See the [Jenkins Workflow Editor code](https://github.com/jenkinsci/workflow-plu
 as an example of how to use this library.
 
 [Ace Editor]: https://ace.c9.io
+[CommonJS]: http://www.commonjs.org/
 [jenkins-js-builder]: https://github.com/tfennelly/jenkins-js-builder
 [jenkins-js-modules]: https://github.com/tfennelly/jenkins-js-modules
