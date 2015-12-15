@@ -242,7 +242,75 @@
                 </plugins>
             </build>
         </profile>      
+
+        <profile>
+            <id>assemble-core-assets</id>
+            <activation>
+                <file>
+                    <exists>gulpfile.js</exists>
+                </file>
+            </activation>
+            <build>
+                <plugins>
+                    <!--
+                        Create a .jar containing all the web resources/assets. Jenkins core can
+                        then include the lib, allowing these assets to be loaded via Jenkins
+                        core using a URL of the form "<resURL>/assets/<namespace>/<resourcePath>".
+                    -->
+                    <plugin>
+                        <artifactId>maven-antrun-plugin</artifactId>
+                        <version>1.8</version>
+                        <!--
+                            Need to manufacture a directory structure that allows us to have the above URL
+                            structure. We symlink the content of the webapp dir. Remember, we are generating
+                            2 artifacts. 1) A HPI with all the resources in it and 2) this jar with the same resources,
+                            but under a different dir structure. You'd think the maven-jar-plugin could do
+                            this for us, but it doesn't seem like it can. We use the pluginId as the
+                            asset namespace.
         
+                            NOTE: We will need to change to copying of the content (instead of symlink) if building
+                            on Windows is something we need.
+                        -->
+                        <executions>
+                            <execution>
+                                <phase>initialize</phase>
+                                <configuration>
+                                    <target>
+                                        <delete file="${project.build.directory}/assets-wrapper"/>
+                                        <mkdir dir="${project.build.directory}/assets-wrapper/assets"/>
+                                        <!-- Use the pluginId as the asset namespace. -->
+                                        <symlink link="${project.build.directory}/assets-wrapper/assets/${project.artifactId}" resource="${project.basedir}/src/main/webapp"/>
+                                    </target>
+                                </configuration>
+                                <goals>
+                                    <goal>run</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <artifactId>maven-jar-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>core-assets</id>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                                <phase>package</phase>
+                                <configuration>
+                                    <classesDirectory>${project.build.directory}/assets-wrapper</classesDirectory>
+                                    <classifier>core-assets</classifier>
+                                    <includes>
+                                        <include>**/*</include>
+                                    </includes>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>      
+      
     </profiles>
     
     <repositories>
@@ -257,65 +325,5 @@
             <url>http://repo.jenkins-ci.org/public/</url>
         </pluginRepository>
     </pluginRepositories>
-
-    <build>
-        <plugins>
-            <!--
-                Create a .jar containing all the web resources/assets. Jenkins core can
-                then include the lib, allowing these assets to be loaded via Jenkins
-                core using a URL of the form "<resURL>/assets/<namespace>/<resourcePath>".
-            -->
-            <plugin>
-                <artifactId>maven-antrun-plugin</artifactId>
-                <version>1.8</version>
-                <!--
-                    Need to manufacture a directory structure that allows us to have the above URL
-                    structure. We symlink the content of the webapp dir. Remember, we are generating
-                    2 artifacts. 1) A HPI with all the resources in it and 2) this jar with the same resources,
-                    but under a different dir structure. You'd think the maven-jar-plugin could do
-                    this for us, but it doesn't seem like it can. We use the pluginId as the
-                    asset namespace.
-
-                    NOTE: We will need to change to copying of the content (instead of symlink) if building
-                    on Windows is something we need.
-                -->
-                <executions>
-                    <execution>
-                        <phase>initialize</phase>
-                        <configuration>
-                            <target>
-                                <delete file="${project.build.directory}/assets-wrapper"/>
-                                <mkdir dir="${project.build.directory}/assets-wrapper/assets"/>
-                                <!-- Use the pluginId as the asset namespace. -->
-                                <symlink link="${project.build.directory}/assets-wrapper/assets/${project.artifactId}" resource="${project.basedir}/src/main/webapp"/>
-                            </target>
-                        </configuration>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <artifactId>maven-jar-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>core-assets</id>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                        <phase>package</phase>
-                        <configuration>
-                            <classesDirectory>${project.build.directory}/assets-wrapper</classesDirectory>
-                            <classifier>core-assets</classifier>
-                            <includes>
-                                <include>**/*</include>
-                            </includes>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
 
 </project>
