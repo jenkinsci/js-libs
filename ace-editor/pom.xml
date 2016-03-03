@@ -6,12 +6,12 @@
     <parent>
         <groupId>org.jenkins-ci.ui</groupId>
         <artifactId>js-module-base</artifactId>
-        <version>1.2</version>
+        <version>1.2.1</version>
         <relativePath>../js-module-base</relativePath>
     </parent>
     <groupId>org.jenkins-ci.ui</groupId>
     <artifactId>ace-editor</artifactId>
-    <version>1.1-SNAPSHOT</version>
+    <version>1.1</version>
     <packaging>hpi</packaging>
 
     <name>JavaScript GUI Lib: ACE Editor bundle plugin</name>
