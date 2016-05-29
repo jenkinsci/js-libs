@@ -1,5 +1,8 @@
 [Numeral.js] module bundle (see [jenkins-js-modules]).
 
+> __Note__: __DEPRECATED__
+> This JavaScript library [can now be easily externalized via the package.json](https://github.com/jenkinsci/js-samples/blob/master/step-04-externalize-libs/HOW-IT-WORKS.md#configure-node-build-to-externalize-dependencies). 
+
 `import` this bundle (see [jenkins-js-modules]) into your application bundle (in your plugin etc) instead of bundling
 [Numeral.js] in your application bundle, making your app bundle considerably lighter.
 
