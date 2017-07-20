@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>plugin</artifactId>        
-        <version>1.580.1</version>
+        <version>2.30</version>
         <relativePath/>
     </parent>
     <groupId>org.jenkins-ci.ui</groupId>
@@ -17,115 +17,19 @@
     <url>https://github.com/jenkinsci/js-libs</url>
 
     <properties>
-        <!-- TODO: Move to parent pom -->
-        <node.version>4.0.0</node.version>
-        <npm.version>2.13.1</npm.version>
+        <node.version>6.4.0</node.version>
+        <npm.version>3.10.3</npm.version>
     </properties>
 
-    <!-- TODO: Move all of these profiles to a parent pom -->
     <profiles>
 
         <!--
-            Manually download node and NPM for the frontend plugin so it gets cached in the local maven repo.
-            Otherwise frontend will be downloading it all the time. The download-maven-plugin
-            caches it's downloads.
+            Create a .jar containing all the web resources/assets. Jenkins core can
+            then include the lib, allowing these assets to be loaded via Jenkins
+            core using a URL of the form "<resURL>/assets/<namespace>/<resourcePath>".
         -->
         <profile>
-            <id>node-classifier-linux</id>
-            <activation>
-                <os><family>Linux</family><arch>amd64</arch></os>
-            </activation>
-            <properties>
-                <node.download.file>node-v${node.version}-linux-x64.tar.gz</node.download.file>
-                <node.download.classifier></node.download.classifier>
-            </properties>
-        </profile>
-        <profile>
-            <id>node-classifier-mac</id>
-            <activation>
-                <os><family>mac</family></os>
-            </activation>
-            <properties>
-                <node.download.file>node-v${node.version}-darwin-x64.tar.gz</node.download.file>
-                <node.download.classifier></node.download.classifier>
-            </properties>
-        </profile>
-        <profile>
-            <id>node-classifier-windows</id>
-            <activation>
-                <os><family>windows</family><arch>x64</arch></os>
-            </activation>
-            <properties>
-                <node.download.file>win-x64/node.exe</node.download.file>
-                <node.download.classifier>/x64</node.download.classifier>
-            </properties>
-        </profile>
-        <profile>
-            <id>node-classifier-windows-amd64</id>
-            <activation>
-                <os><family>windows</family><arch>amd64</arch></os>
-            </activation>
-            <properties>
-                <node.download.file>win-x64/node.exe</node.download.file>
-                <node.download.classifier>/x64</node.download.classifier>
-            </properties>
-        </profile>
-        <profile>
-            <id>node-classifier-windows-x86</id>
-            <activation>
-                <os><family>windows</family><arch>x86</arch></os>
-            </activation>
-            <properties>
-                <node.download.file>win-x86/node.exe</node.download.file>
-                <node.download.classifier></node.download.classifier>
-            </properties>
-        </profile>
-        <profile>
-            <id>node-download</id>
-            <activation>
-                <file>
-                    <exists>package.json</exists>
-                </file>
-            </activation>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>com.googlecode.maven-download-plugin</groupId>
-                        <artifactId>download-maven-plugin</artifactId>
-                        <version>1.2.1</version>
-                        <executions>
-                            <execution>
-                                <id>get-node</id>
-                                <phase>initialize</phase>
-                                <goals>
-                                    <goal>wget</goal>
-                                </goals>
-                                <configuration>
-                                    <url>https://nodejs.org/dist/v${node.version}/${node.download.file}</url>
-                                    <unpack>false</unpack>
-                                    <outputDirectory>${project.build.directory}/frontend/v${node.version}${node.download.classifier}</outputDirectory>
-                                </configuration>
-                            </execution>
-                            <execution>
-                                <id>get-npm</id>
-                                <phase>initialize</phase>
-                                <goals>
-                                    <goal>wget</goal>
-                                </goals>
-                                <configuration>
-                                    <url>http://registry.npmjs.org/npm/-/npm-${npm.version}.tgz</url>
-                                    <unpack>false</unpack>
-                                    <outputDirectory>${project.build.directory}/frontend/</outputDirectory>
-                                    <outputFileName>npm-${npm.version}.tgz</outputFileName>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-        <profile>
-            <id>gulp-execution</id>
+            <id>init-target-jsmodules</id>
             <activation>
                 <file>
                     <exists>gulpfile.js</exists>
@@ -133,130 +37,6 @@
             </activation>
             <build>
                 <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-enforcer-plugin</artifactId>
-                        <version>1.3.1</version>
-                        <executions>
-                            <execution>
-                                <id>enforce-versions</id>
-                                <goals>
-                                    <goal>enforce</goal>
-                                </goals>
-                                <configuration>
-                                    <rules>
-                                        <requireMavenVersion>
-                                            <version>3.1.0</version>
-                                        </requireMavenVersion>
-                                    </rules>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-                    <plugin>
-                        <groupId>com.github.eirslett</groupId>
-                        <artifactId>frontend-maven-plugin</artifactId>
-                        <version>0.0.23</version>
-
-                        <executions>
-
-                            <execution>
-                                <phase>initialize</phase>
-                                <id>install node and npm</id>
-                                <goals>
-                                    <goal>install-node-and-npm</goal>
-                                </goals>
-                                <configuration>
-                                    <nodeVersion>v${node.version}</nodeVersion>
-                                    <npmVersion>${npm.version}</npmVersion>
-                                    <!-- Use the pre-download node and npm packages. See download-maven-plugin config above. -->
-                                    <downloadRoot>${project.baseUri}target/frontend/</downloadRoot>
-                                </configuration>
-                            </execution>
-
-                            <execution>
-                                <phase>initialize</phase>
-                                <id>npm install</id>
-                                <goals>
-                                    <goal>npm</goal>
-                                </goals>
-                                <configuration>
-                                    <!-- Note that this may not be omitted lest maven-release-plugin be confused (frontend-maven-plugin #109): -->
-                                    <arguments>install</arguments>
-                                </configuration>
-                            </execution>
-
-                            <execution>
-                                <phase>generate-sources</phase>
-                                <id>gulp bundle</id>
-                                <goals>
-                                    <goal>gulp</goal>
-                                </goals>
-                                <configuration>
-                                    <arguments>bundle</arguments>
-                                </configuration>
-                            </execution>
-
-                            <execution>
-                                <phase>test</phase>
-                                <id>gulp test</id>
-                                <goals>
-                                    <goal>gulp</goal>
-                                </goals>
-                            </execution>
-
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-
-        <profile>
-            <id>clean-node</id>
-            <activation>
-                <file>
-                    <exists>package.json</exists>
-                </file>
-                <property>
-                    <name>cleanNode</name>
-                </property>
-            </activation>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-clean-plugin</artifactId>
-                        <configuration>
-                            <filesets>
-                                <fileset>
-                                    <directory>node</directory>
-                                    <followSymlinks>false</followSymlinks>
-                                </fileset>
-                                <fileset>
-                                    <directory>node_modules</directory>
-                                    <followSymlinks>false</followSymlinks>
-                                </fileset>
-                            </filesets>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>      
-
-        <profile>
-            <id>assemble-core-assets</id>
-            <activation>
-                <file>
-                    <exists>gulpfile.js</exists>
-                </file>
-            </activation>
-            <build>
-                <plugins>
-                    <!--
-                        Create a .jar containing all the web resources/assets. Jenkins core can
-                        then include the lib, allowing these assets to be loaded via Jenkins
-                        core using a URL of the form "<resURL>/assets/<namespace>/<resourcePath>".
-                    -->
                     <plugin>
                         <artifactId>maven-antrun-plugin</artifactId>
                         <version>1.8</version>
@@ -275,6 +55,34 @@
                                     <target>
                                         <delete file="${project.build.directory}/assets-wrapper"/>
                                         <mkdir dir="${project.build.directory}/assets-wrapper/assets/${project.artifactId}/jsmodules"/>
+                                    </target>
+                                </configuration>
+                                <goals>
+                                    <goal>run</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>copy-jsmodules</id>
+            <activation>
+                <file>
+                    <exists>${project.basedir}/src/main/webapp/jsmodules</exists>
+                </file>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-antrun-plugin</artifactId>
+                        <version>1.8</version>
+                        <executions>
+                            <execution>
+                                <phase>initialize</phase>
+                                <configuration>
+                                    <target>
                                         <!-- Use the pluginId as the asset namespace. -->
                                         <copy todir="${project.build.directory}/assets-wrapper/assets/${project.artifactId}/jsmodules">
                                             <fileset dir="${project.basedir}/src/main/webapp/jsmodules"/>
@@ -287,6 +95,18 @@
                             </execution>
                         </executions>
                     </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>assemble-core-assets</id>
+            <activation>
+                <file>
+                    <exists>gulpfile.js</exists>
+                </file>
+            </activation>
+            <build>
+                <plugins>
                     <plugin>
                         <artifactId>maven-jar-plugin</artifactId>
                         <executions>
@@ -308,8 +128,8 @@
                     </plugin>
                 </plugins>
             </build>
-        </profile>      
-      
+        </profile>
+
     </profiles>
     
     <repositories>
