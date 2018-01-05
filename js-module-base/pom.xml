@@ -70,7 +70,7 @@
             <id>copy-jsmodules</id>
             <activation>
                 <file>
-                    <exists>${project.basedir}/src/main/webapp/jsmodules</exists>
+                    <exists>${basedir}/src/main/webapp/jsmodules</exists>
                 </file>
             </activation>
             <build>
@@ -80,7 +80,7 @@
                         <version>1.8</version>
                         <executions>
                             <execution>
-                                <phase>initialize</phase>
+                                <phase>package</phase>
                                 <configuration>
                                     <target>
                                         <!-- Use the pluginId as the asset namespace. -->
