@@ -4,6 +4,10 @@
   "description": "Jenkins CI Numeral.js JavaScript module",
   "author": "Michael Prankl <eidottermihi@gmail.com> (https://github.com/eidottermihi)",
   "license": "MIT",
+  "scripts": {
+    "mvnbuild": "gulp bundle",
+    "mvntest": "gulp test"
+  },
   "devDependencies": {
     "gulp": "^3.9.0",
     "jenkins-js-builder": "0.0.33"
