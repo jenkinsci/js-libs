@@ -6,7 +6,7 @@
     <parent>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>plugin</artifactId>
-        <version>2.30</version>
+        <version>3.2</version>
         <relativePath/>
     </parent>
     
@@ -27,6 +27,7 @@
     </modules>
 
     <properties>
+        <java.level>8</java.level>
         <node.version>6.4.0</node.version>
         <npm.version>3.10.3</npm.version>
     </properties>
