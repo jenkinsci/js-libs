@@ -102,7 +102,7 @@
                                     <target>
                                         <!-- Use the pluginId as the asset namespace. -->
                                         <copy todir="${project.build.directory}/assets-wrapper/assets/${project.artifactId}/jsmodules">
-                                            <fileset dir="${basedir}/src/main/webapp/jsmodules"/>
+                                            <fileset dir="${project.basedir}/src/main/webapp/jsmodules"/>
                                         </copy>
                                     </target>
                                 </configuration>
