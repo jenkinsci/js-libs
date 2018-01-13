@@ -18,7 +18,6 @@
     <name>Lib Bundle: Parent POM</name>
 
     <modules>
-        <module>js-module-base</module>
         <module>jquery-detached</module>
         <module>bootstrap</module>
         <module>handlebars</module>
@@ -27,6 +26,11 @@
         <module>numeraljs</module>
     </modules>
 
+    <properties>
+        <node.version>6.4.0</node.version>
+        <npm.version>3.10.3</npm.version>
+    </properties>
+    
     <scm>
         <connection>scm:git:git://github.com/jenkinsci/js-libs.git</connection>
         <developerConnection>scm:git:git@github.com:jenkinsci/js-libs.git</developerConnection>
@@ -34,4 +38,128 @@
         <tag>HEAD</tag>
     </scm>
 
+    <profiles>
+
+        <!--
+            Create a .jar containing all the web resources/assets. Jenkins core can
+            then include the lib, allowing these assets to be loaded via Jenkins
+            core using a URL of the form "<resURL>/assets/<namespace>/<resourcePath>".
+        -->
+        <profile>
+            <id>init-target-jsmodules</id>
+            <activation>
+                <file>
+                    <exists>gulpfile.js</exists>
+                </file>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-antrun-plugin</artifactId>
+                        <version>1.8</version>
+                        <!--
+                            Need to manufacture a directory structure that allows us to have the above URL
+                            structure. We copy the content of the webapp dir. Remember, we are generating
+                            2 artifacts. 1) A HPI with all the resources in it and 2) this jar with the same resources,
+                            but under a different dir structure. You'd think the maven-jar-plugin could do
+                            this for us, but it doesn't seem like it can. We use the pluginId as the
+                            asset namespace.
+                        -->
+                        <executions>
+                            <execution>
+                                <phase>initialize</phase>
+                                <configuration>
+                                    <target>
+                                        <delete file="${project.build.directory}/assets-wrapper"/>
+                                        <mkdir dir="${project.build.directory}/assets-wrapper/assets/${project.artifactId}/jsmodules"/>
+                                    </target>
+                                </configuration>
+                                <goals>
+                                    <goal>run</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>copy-jsmodules</id>
+            <activation>
+                <file>
+                    <exists>${basedir}/src/main/webapp/jsmodules</exists>
+                </file>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-antrun-plugin</artifactId>
+                        <version>1.8</version>
+                        <executions>
+                            <execution>
+                                <phase>package</phase>
+                                <configuration>
+                                    <target>
+                                        <!-- Use the pluginId as the asset namespace. -->
+                                        <copy todir="${project.build.directory}/assets-wrapper/assets/${project.artifactId}/jsmodules">
+                                            <fileset dir="${basedir}/src/main/webapp/jsmodules"/>
+                                        </copy>
+                                    </target>
+                                </configuration>
+                                <goals>
+                                    <goal>run</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>assemble-core-assets</id>
+            <activation>
+                <file>
+                    <exists>gulpfile.js</exists>
+                </file>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-jar-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>core-assets</id>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                                <phase>package</phase>
+                                <configuration>
+                                    <classesDirectory>${project.build.directory}/assets-wrapper</classesDirectory>
+                                    <classifier>core-assets</classifier>
+                                    <includes>
+                                        <include>**/*</include>
+                                    </includes>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+    </profiles>
+
+    <repositories>
+        <repository>
+            <id>repo.jenkins-ci.org</id>
+            <url>http://repo.jenkins-ci.org/public/</url>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>repo.jenkins-ci.org</id>
+            <url>http://repo.jenkins-ci.org/public/</url>
+        </pluginRepository>
+    </pluginRepositories>
+    
 </project>
