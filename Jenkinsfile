@@ -1,5 +1,8 @@
 pipeline {
-  agent { docker 'maven:3.2-jdk-7-onbuild' }
+  agent { docker 'maven:3.5.2-jdk-8' }
+  environment {
+    HOME = '.'
+  }
   stages {
     stage('build') {
       steps {

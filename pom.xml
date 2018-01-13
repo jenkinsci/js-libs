@@ -47,48 +47,10 @@
             core using a URL of the form "<resURL>/assets/<namespace>/<resourcePath>".
         -->
         <profile>
-            <id>init-target-jsmodules</id>
+            <id>copy-core-assets</id>
             <activation>
                 <file>
-                    <exists>gulpfile.js</exists>
-                </file>
-            </activation>
-            <build>
-                <plugins>
-                    <plugin>
-                        <artifactId>maven-antrun-plugin</artifactId>
-                        <version>1.8</version>
-                        <!--
-                            Need to manufacture a directory structure that allows us to have the above URL
-                            structure. We copy the content of the webapp dir. Remember, we are generating
-                            2 artifacts. 1) A HPI with all the resources in it and 2) this jar with the same resources,
-                            but under a different dir structure. You'd think the maven-jar-plugin could do
-                            this for us, but it doesn't seem like it can. We use the pluginId as the
-                            asset namespace.
-                        -->
-                        <executions>
-                            <execution>
-                                <phase>initialize</phase>
-                                <configuration>
-                                    <target>
-                                        <delete file="${project.build.directory}/assets-wrapper"/>
-                                        <mkdir dir="${project.build.directory}/assets-wrapper/assets/${project.artifactId}/jsmodules"/>
-                                    </target>
-                                </configuration>
-                                <goals>
-                                    <goal>run</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-        <profile>
-            <id>copy-jsmodules</id>
-            <activation>
-                <file>
-                    <exists>${basedir}/src/main/webapp/jsmodules</exists>
+                    <exists>.mvn_exec_node</exists>
                 </file>
             </activation>
             <build>
@@ -98,13 +60,19 @@
                         <version>1.8</version>
                         <executions>
                             <execution>
-                                <phase>generate-sources</phase>
+                                <phase>process-resources</phase>
                                 <configuration>
                                     <target>
                                         <!-- Use the pluginId as the asset namespace. -->
-                                        <copy todir="${project.build.directory}/assets-wrapper/assets/${project.artifactId}/jsmodules">
+                                        <property name="asset.out.dir" value="${project.build.directory}/assets-wrapper/assets/${project.artifactId}/jsmodules"/>
+                                        
+                                        <echo>======= JS core assets copy =======</echo>
+                                        <delete file="${project.build.directory}/assets-wrapper"/>
+                                        <mkdir dir="${asset.out.dir}"/>
+                                        <copy todir="${asset.out.dir}" verbose="true">
                                             <fileset dir="${project.basedir}/src/main/webapp/jsmodules"/>
                                         </copy>
+                                        <echo>=======================================</echo>
                                     </target>
                                 </configuration>
                                 <goals>
@@ -120,7 +88,7 @@
             <id>assemble-core-assets</id>
             <activation>
                 <file>
-                    <exists>gulpfile.js</exists>
+                    <exists>.mvn_exec_node</exists>
                 </file>
             </activation>
             <build>
