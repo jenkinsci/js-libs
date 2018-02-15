@@ -4,6 +4,10 @@
   "description": "Jenkins CI JQuery JavaScript module",
   "author": "Tom Fennelly <tom.fennelly@gmail.com> (https://github.com/tfennelly)",
   "license": "MIT",
+  "scripts": {
+    "mvnbuild": "gulp bundle",
+    "mvntest": "gulp test"
+  },
   "devDependencies": {
     "gulp": "^3.9.0",
     "jsdom": "7.0.2",

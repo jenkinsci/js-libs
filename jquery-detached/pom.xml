@@ -5,13 +5,13 @@
 
     <parent>
         <groupId>org.jenkins-ci.ui</groupId>
-        <artifactId>js-module-base</artifactId>
-        <version>1.2.1</version>
-        <relativePath>../js-module-base</relativePath>
+        <artifactId>jenkins-js-libs</artifactId>
+        <version>2.0.0-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
+    
     <groupId>org.jenkins-ci.ui</groupId>
     <artifactId>jquery-detached</artifactId>
-    <version>1.2.1</version>
     <packaging>hpi</packaging>
 
     <name>JavaScript GUI Lib: jQuery bundles (jQuery and jQuery UI) plugin</name>
