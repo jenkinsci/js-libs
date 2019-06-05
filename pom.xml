@@ -3,15 +3,21 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <parent>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>plugin</artifactId>
+        <version>2.16</version>
+        <relativePath/>
+    </parent>
+    
     <groupId>org.jenkins-ci.ui</groupId>
     <artifactId>jenkins-js-libs</artifactId>
-    <version>1.0</version>
+    <version>2.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>Lib Bundle: Parent POM</name>
 
     <modules>
-        <module>js-module-base</module>
         <module>jquery-detached</module>
         <module>bootstrap</module>
         <module>handlebars</module>
@@ -20,6 +26,12 @@
         <module>numeraljs</module>
     </modules>
 
+    <properties>
+        <java.level>8</java.level>
+        <node.version>6.4.0</node.version>
+        <npm.version>3.10.3</npm.version>
+    </properties>
+    
     <scm>
         <connection>scm:git:git://github.com/jenkinsci/js-libs.git</connection>
         <developerConnection>scm:git:git@github.com:jenkinsci/js-libs.git</developerConnection>
@@ -27,4 +39,96 @@
         <tag>HEAD</tag>
     </scm>
 
+    <profiles>
+
+        <!--
+            Create a .jar containing all the web resources/assets. Jenkins core can
+            then include the lib, allowing these assets to be loaded via Jenkins
+            core using a URL of the form "<resURL>/assets/<namespace>/<resourcePath>".
+        -->
+        <profile>
+            <id>copy-core-assets</id>
+            <activation>
+                <file>
+                    <exists>.mvn_exec_node</exists>
+                </file>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-antrun-plugin</artifactId>
+                        <version>1.8</version>
+                        <executions>
+                            <execution>
+                                <phase>process-resources</phase>
+                                <configuration>
+                                    <target>
+                                        <!-- Use the pluginId as the asset namespace. -->
+                                        <property name="asset.out.dir" value="${project.build.directory}/assets-wrapper/assets/${project.artifactId}/jsmodules"/>
+                                        
+                                        <echo>======= JS core assets copy =======</echo>
+                                        <delete file="${project.build.directory}/assets-wrapper"/>
+                                        <mkdir dir="${asset.out.dir}"/>
+                                        <copy todir="${asset.out.dir}" verbose="true">
+                                            <fileset dir="${project.basedir}/src/main/webapp/jsmodules"/>
+                                        </copy>
+                                        <echo>=======================================</echo>
+                                    </target>
+                                </configuration>
+                                <goals>
+                                    <goal>run</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>assemble-core-assets</id>
+            <activation>
+                <file>
+                    <exists>.mvn_exec_node</exists>
+                </file>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-jar-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>core-assets</id>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                                <phase>package</phase>
+                                <configuration>
+                                    <classesDirectory>${project.build.directory}/assets-wrapper</classesDirectory>
+                                    <classifier>core-assets</classifier>
+                                    <includes>
+                                        <include>**/*</include>
+                                    </includes>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+    </profiles>
+
+    <repositories>
+        <repository>
+            <id>repo.jenkins-ci.org</id>
+            <url>http://repo.jenkins-ci.org/public/</url>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>repo.jenkins-ci.org</id>
+            <url>http://repo.jenkins-ci.org/public/</url>
+        </pluginRepository>
+    </pluginRepositories>
+    
 </project>
