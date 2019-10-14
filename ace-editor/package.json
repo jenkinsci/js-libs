@@ -15,7 +15,7 @@
     "zombie": "^4.2.1"
   },
   "dependencies": {
-    "jenkins-js-modules": "1.4.0",
-    "window-handle": "0.0.6"
+    "jenkins-js-modules": "1.5.4",
+    "window-handle": "1.0.1"
   }
 }

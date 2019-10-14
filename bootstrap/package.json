@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "bootstrap-detached-3.3": "^3.3.5-v1",
-    "jenkins-js-modules": "1.4.0",
-    "window-handle": "0.0.6"
+    "jenkins-js-modules": "1.5.4",
+    "window-handle": "1.0.1"
   }
 }
