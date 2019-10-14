@@ -10,7 +10,6 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <groupId>org.jenkins-ci.ui</groupId>
     <artifactId>ace-editor</artifactId>
     <packaging>hpi</packaging>
 

@@ -9,8 +9,7 @@
         <version>2.0.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
-    
-    <groupId>org.jenkins-ci.ui</groupId>
+
     <artifactId>numeraljs</artifactId>
     <packaging>hpi</packaging>
 

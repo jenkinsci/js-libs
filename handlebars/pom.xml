@@ -10,7 +10,6 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <groupId>org.jenkins-ci.ui</groupId>
     <artifactId>handlebars</artifactId>
     <packaging>hpi</packaging>
 
