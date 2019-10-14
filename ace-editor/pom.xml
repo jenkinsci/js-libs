@@ -14,8 +14,8 @@
     <packaging>hpi</packaging>
 
     <name>JavaScript GUI Lib: ACE Editor bundle plugin</name>
-    <url>https://wiki.jenkins-ci.org/display/JENKINS/ACE+Editor+Plugin</url>
-    
+    <url>https://wiki.jenkins.io/display/JENKINS/ACE+Editor+Plugin</url>
+
     <licenses>
         <license>
             <name>MIT License</name>

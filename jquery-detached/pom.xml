@@ -14,8 +14,8 @@
     <packaging>hpi</packaging>
 
     <name>JavaScript GUI Lib: jQuery bundles (jQuery and jQuery UI) plugin</name>
-    <url>https://wiki.jenkins-ci.org/display/JENKINS/jQuery+Detached+Plugin</url>
-    
+    <url>https://wiki.jenkins.io/display/JENKINS/jQuery+Detached+Plugin</url>
+
     <licenses>
         <license>
             <name>MIT License</name>
