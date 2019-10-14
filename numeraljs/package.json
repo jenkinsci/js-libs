@@ -10,7 +10,7 @@
   },
   "devDependencies": {
     "gulp": "^3.9.0",
-    "jenkins-js-builder": "0.0.33"
+    "jenkins-js-builder": "0.0.51"
   },
   "dependencies": {
     "jenkins-js-modules": "1.4.0",

@@ -10,8 +10,8 @@
   },
   "devDependencies": {
     "gulp": "^3.9.0",
-    "jenkins-js-builder": "0.0.33",
-    "jenkins-js-test": "0.0.15",
+    "jenkins-js-builder": "0.0.51",
+    "jenkins-js-test": "1.0.1",
     "zombie": "^4.2.1"
   },
   "dependencies": {
