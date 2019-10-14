@@ -40,7 +40,6 @@
     </scm>
 
     <profiles>
-
         <!--
             Create a .jar containing all the web resources/assets. Jenkins core can
             then include the lib, allowing these assets to be loaded via Jenkins
@@ -115,20 +114,19 @@
                 </plugins>
             </build>
         </profile>
-
     </profiles>
 
     <repositories>
         <repository>
             <id>repo.jenkins-ci.org</id>
-            <url>http://repo.jenkins-ci.org/public/</url>
+            <url>https://repo.jenkins-ci.org/public/</url>
         </repository>
     </repositories>
     <pluginRepositories>
         <pluginRepository>
             <id>repo.jenkins-ci.org</id>
-            <url>http://repo.jenkins-ci.org/public/</url>
+            <url>https://repo.jenkins-ci.org/public/</url>
         </pluginRepository>
     </pluginRepositories>
-    
+
 </project>
