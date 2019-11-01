@@ -14,7 +14,7 @@
     "jenkins-js-builder": "0.0.33"
   },
   "dependencies": {
-    "handlebars": "^3.0.3",
+    "handlebars": "^4.5.1",
     "jenkins-js-modules": "1.4.0",
     "window-handle": "0.0.6"
   }
