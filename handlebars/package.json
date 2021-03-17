@@ -9,12 +9,12 @@
     "mvntest": "gulp test"
   },
   "devDependencies": {
-    "gulp": "^3.9.0",
-    "jsdom": "7.0.2",
-    "jenkins-js-builder": "0.0.51"
+    "gulp": "^4.0.2",
+    "jenkins-js-builder": "0.0.51",
+    "jsdom": "7.0.2"
   },
   "dependencies": {
-    "handlebars": "^3.0.8",
+    "handlebars": "^4.7.7",
     "jenkins-js-modules": "1.5.4",
     "window-handle": "1.0.1"
   }
