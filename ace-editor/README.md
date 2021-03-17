@@ -54,7 +54,7 @@ jsModules.import('ace-editor:ace-editor-122')
     });
 ```
 
-See the [Jenkins Workflow Editor code](https://github.com/jenkinsci/workflow-plugin/blob/master/cps/src/main/js/workflow-editor.js)
+See the [Jenkins Workflow Editor code](https://github.com/jenkinsci/workflow-cps-plugin/blob/master/src/main/js/workflow-editor.js)
 as an example of how to use this library.
 
 [Ace Editor]: https://ace.c9.io

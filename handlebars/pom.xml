@@ -16,6 +16,13 @@
     <name>JavaScript GUI Lib: Handlebars bundle plugin</name>
     <url>https://wiki.jenkins.io/display/JENKINS/Handlebars.js</url>
 
+    <scm>
+        <connection>scm:git:git://github.com/jenkinsci/js-libs.git</connection>
+        <developerConnection>scm:git:git@github.com:jenkinsci/js-libs.git</developerConnection>
+        <url>https://github.com/jenkinsci/js-libs/tree/master/handlebars</url>
+        <tag>HEAD</tag>
+    </scm>
+
     <licenses>
         <license>
             <name>MIT License</name>

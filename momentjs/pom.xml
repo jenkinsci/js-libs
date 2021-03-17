@@ -15,6 +15,13 @@
 
     <name>JavaScript GUI Lib: Moment.js bundle plugin</name>
     <url>https://wiki.jenkins.io/display/JENKINS/Moment.js</url>
+    
+    <scm>
+        <connection>scm:git:git://github.com/jenkinsci/js-libs.git</connection>
+        <developerConnection>scm:git:git@github.com:jenkinsci/js-libs.git</developerConnection>
+        <url>https://github.com/jenkinsci/js-libs/tree/master/momentjs</url>
+        <tag>HEAD</tag>
+    </scm>
 
     <licenses>
         <license>
