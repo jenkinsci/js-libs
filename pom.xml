@@ -6,10 +6,10 @@
     <parent>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>plugin</artifactId>
-        <version>3.2</version>
+        <version>3.50</version>
         <relativePath/>
     </parent>
-    
+
     <groupId>org.jenkins-ci.ui</groupId>
     <artifactId>jenkins-js-libs</artifactId>
     <version>2.0.0-SNAPSHOT</version>
@@ -28,10 +28,10 @@
 
     <properties>
         <java.level>8</java.level>
-        <node.version>6.4.0</node.version>
-        <npm.version>3.10.3</npm.version>
+        <node.version>10.16.3</node.version>
+        <npm.version>6.12.0</npm.version>
     </properties>
-    
+
     <scm>
         <connection>scm:git:git://github.com/jenkinsci/js-libs.git</connection>
         <developerConnection>scm:git:git@github.com:jenkinsci/js-libs.git</developerConnection>
@@ -40,7 +40,6 @@
     </scm>
 
     <profiles>
-
         <!--
             Create a .jar containing all the web resources/assets. Jenkins core can
             then include the lib, allowing these assets to be loaded via Jenkins
@@ -65,7 +64,6 @@
                                     <target>
                                         <!-- Use the pluginId as the asset namespace. -->
                                         <property name="asset.out.dir" value="${project.build.directory}/assets-wrapper/assets/${project.artifactId}/jsmodules"/>
-                                        
                                         <echo>======= JS core assets copy =======</echo>
                                         <delete file="${project.build.directory}/assets-wrapper"/>
                                         <mkdir dir="${asset.out.dir}"/>
@@ -115,7 +113,6 @@
                 </plugins>
             </build>
         </profile>
-
     </profiles>
 
     <repositories>
@@ -130,5 +127,5 @@
             <url>https://repo.jenkins-ci.org/public/</url>
         </pluginRepository>
     </pluginRepositories>
-    
+
 </project>

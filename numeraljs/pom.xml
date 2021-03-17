@@ -9,25 +9,24 @@
         <version>2.0.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
-    
-    <groupId>org.jenkins-ci.ui</groupId>
+
     <artifactId>numeraljs</artifactId>
     <packaging>hpi</packaging>
 
     <name>JavaScript GUI Lib: Numeral.js bundle plugin</name>
-    <url>https://wiki.jenkins-ci.org/display/JENKINS/Numeral.js</url>
+    <url>https://wiki.jenkins.io/display/JENKINS/Numeral.js</url>
     
     <scm>
         <connection>scm:git:git://github.com/jenkinsci/js-libs.git</connection>
         <developerConnection>scm:git:git@github.com:jenkinsci/js-libs.git</developerConnection>
         <url>https://github.com/jenkinsci/js-libs/tree/master/numeraljs</url>
         <tag>HEAD</tag>
-    </scm>
+    </scm
 
     <licenses>
         <license>
             <name>MIT License</name>
-            <url>http://opensource.org/licenses/MIT</url>
+            <url>https://opensource.org/licenses/MIT</url>
         </license>
     </licenses>
 

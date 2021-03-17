@@ -11,11 +11,11 @@
   "devDependencies": {
     "gulp": "^3.9.0",
     "jsdom": "7.0.2",
-    "jenkins-js-builder": "0.0.33"
+    "jenkins-js-builder": "0.0.51"
   },
   "dependencies": {
     "handlebars": "^3.0.8",
-    "jenkins-js-modules": "1.4.0",
-    "window-handle": "0.0.6"
+    "jenkins-js-modules": "1.5.4",
+    "window-handle": "1.0.1"
   }
 }
