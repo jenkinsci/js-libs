@@ -11,6 +11,7 @@
     </parent>
 
     <artifactId>handlebars</artifactId>
+    <version>3.0.8-SNAPSHOT</version>
     <packaging>hpi</packaging>
 
     <name>JavaScript GUI Lib: Handlebars bundle plugin</name>
