@@ -9,13 +9,14 @@
     "mvntest": "gulp test"
   },
   "devDependencies": {
+    "@jenkins-cd/js-test": "^1.2.3",
     "gulp": "^3.9.0",
-    "jsdom": "7.0.2",
-    "jenkins-js-builder": "0.0.51"
+    "jenkins-js-builder": "0.0.51",
+    "jsdom": "7.0.2"
   },
   "dependencies": {
-    "handlebars": "^3.0.8",
     "jenkins-js-modules": "1.5.4",
+    "handlebars": "^3.0.8",
     "window-handle": "1.0.1"
   }
 }

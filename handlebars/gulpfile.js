@@ -1,4 +1,4 @@
-var builder = require('jenkins-js-builder');
+const builder = require('jenkins-js-builder');
 
 //
 // Bundle the module.
