@@ -10,7 +10,7 @@
     </parent>
 
     <artifactId>handlebars</artifactId>
-    <version>3.0.8</version>
+    <version>3.0.9-SNAPSHOT</version>
     <packaging>hpi</packaging>
 
     <name>JavaScript GUI Lib: Handlebars bundle plugin</name>
@@ -20,7 +20,7 @@
         <connection>scm:git:git://github.com/jenkinsci/js-libs.git</connection>
         <developerConnection>scm:git:git@github.com:jenkinsci/js-libs.git</developerConnection>
         <url>https://github.com/jenkinsci/js-libs/tree/master/handlebars</url>
-        <tag>handlebars-3.0.8</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <licenses>
