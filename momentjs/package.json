@@ -14,6 +14,6 @@
   },
   "dependencies": {
     "jenkins-js-modules": "1.5.4",
-    "moment": "^2.10.3"
+    "moment": "^2.19.3"
   }
 }
