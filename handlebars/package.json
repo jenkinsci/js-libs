@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "jenkins-js-modules": "1.5.4",
-    "handlebars": "^3.0.8",
+    "handlebars": "^4.7.7",
     "window-handle": "1.0.1"
   }
 }
