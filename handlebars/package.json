@@ -12,7 +12,7 @@
     "@jenkins-cd/js-test": "^1.2.3",
     "gulp": "^3.9.0",
     "jenkins-js-builder": "0.0.51",
-    "jsdom": "7.0.2"
+    "jsdom": "16.5.0"
   },
   "dependencies": {
     "jenkins-js-modules": "1.5.4",
