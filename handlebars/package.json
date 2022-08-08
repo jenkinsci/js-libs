@@ -1,5 +1,5 @@
 {
-  "name": "@scherler/jenkins-handlebars-rt",
+  "name": "jenkins-handlebars-rt",
   "version": "1.0.2",
   "description": "Jenkins CI Handlebars Runtime JavaScript module",
   "author": "Tom Fennelly <tom.fennelly@gmail.com> (https://github.com/tfennelly)",
@@ -7,9 +7,6 @@
   "scripts": {
     "mvnbuild": "gulp bundle",
     "mvntest": "gulp test"
-  },
-  "publishConfig": {
-    "registry":"https://npm.pkg.github.com"
   },
   "devDependencies": {
     "@jenkins-cd/js-test": "^1.2.3",
