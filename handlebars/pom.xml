@@ -10,7 +10,7 @@
     </parent>
 
     <artifactId>handlebars</artifactId>
-    <version>3.0.9-SNAPSHOT</version>
+    <version>3.0.10-SNAPSHOT</version>
     <packaging>hpi</packaging>
 
     <name>JavaScript GUI Lib: Handlebars bundle plugin</name>
