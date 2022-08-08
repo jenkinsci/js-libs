@@ -6,3 +6,7 @@ const builder = require('jenkins-js-builder');
 builder.bundle('handlebars', 'handlebars3')
     .asJenkinsModuleResource()
     .export();
+//
+builder.bundle('handlebars', 'handlebars4')
+    .asJenkinsModuleResource()
+    .export();
