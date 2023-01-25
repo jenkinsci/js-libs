@@ -21,5 +21,10 @@ that __can__ be externalized via the [easy/recommended externalization process].
 
 > Also see __[sample plugins](https://github.com/jenkinsci/js-samples)__. 
 
+# Development
+
+This repository needs to be cloned with the `git` option `core.symlinks` set to `true` to create a symbolic link for `ace-editor/src/test/webroot/jenkins/plugin/ace-editor`.
+Otherwise, the tests of `ace-editor` will fail.
+
 [jenkins-js-modules]: https://github.com/tfennelly/jenkins-js-modules
 [easy/recommended externalization process]: https://github.com/jenkinsci/js-samples/blob/master/step-04-externalize-libs/HOW-IT-WORKS.md#configure-node-build-to-externalize-dependencies
