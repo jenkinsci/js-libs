@@ -1,3 +1,9 @@
+# ❗ This repository is unmaintained and end of life!
+<h2>
+    All provided plugins are deprecated. <br>
+    Dependents of these plugins are advised to migrate to modern and maintained ways to bundle libraries, like NPM or Yarn.
+</h2>
+
 # JavaScript Framework Library "bundle" plugins
 
 This repository contains Jenkins HPI plugins that "externalize" common/shared JavaScript libraries
